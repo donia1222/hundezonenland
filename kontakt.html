@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt – HundeZonen</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;font-family:Inter,sans-serif;color:#3D4A38;background:#F7F4EF}
+  h1,h2,h3,.fredoka{font-family:Fredoka,sans-serif}
+  .card{box-shadow:rgba(30,44,26,0.06) 0 1px 4px 0}
+  input,textarea{outline:none}
+  input:focus,textarea:focus{border-color:#047857}
+  .type-card input:checked + div{border-color:#047857;background:#E6F2EE}
+</style>
+</head>
+<body>
+<header class="border-b sticky top-0 backdrop-blur-xl bg-white/65 border-[rgba(30,44,26,0.12)] z-50 card">
+  <div class="max-w-4xl mx-auto px-4 min-h-[68px] flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-semibold text-[#257564] text-[22px] fredoka"><img src="hundezonen-assets/icon.png" alt="" class="w-8 h-8 rounded-xl"> HundeZonen</a>
+    <a href="index.html" class="text-[#257564] font-semibold text-[14px] hover:underline">← Zurück</a>
+  </div>
+</header>
+
+<main class="max-w-2xl mx-auto px-4 py-14">
+  <h1 class="font-bold text-[#1E2C1A] text-[40px] tracking-[-1px]">Kontaktieren Sie uns</h1>
+  <p class="text-[#5F6B57] text-[16px] leading-[1.7] mt-3">Wir freuen uns über Ihr Feedback. Wählen Sie einen Typ und schreiben Sie uns – Ihre Nachricht wird an <a href="mailto:info@hundezonen.ch" class="text-[#047857] font-semibold hover:underline">info@hundezonen.ch</a> gesendet.</p>
+
+  <form id="kontaktForm" class="mt-8 bg-white rounded-3xl card border border-[#E8E4DC] p-7 space-y-5">
+    <div>
+      <label class="block font-semibold text-[#1E2C1A] text-[14px] mb-2">Typ auswählen</label>
+      <div class="grid grid-cols-3 gap-3">
+        <label class="type-card cursor-pointer">
+          <input type="radio" name="typ" value="Fehler" class="hidden" checked>
+          <div class="border-2 border-[#E8E4DC] rounded-2xl p-4 text-center transition">
+            <div class="text-2xl">🐛</div><div class="font-semibold text-[#1E2C1A] text-[14px] mt-1">Fehler</div><div class="text-[#5F6B57] text-[12px]">Problem melden</div>
+          </div>
+        </label>
+        <label class="type-card cursor-pointer">
+          <input type="radio" name="typ" value="Idee" class="hidden">
+          <div class="border-2 border-[#E8E4DC] rounded-2xl p-4 text-center transition">
+            <div class="text-2xl">💡</div><div class="font-semibold text-[#1E2C1A] text-[14px] mt-1">Idee</div><div class="text-[#5F6B57] text-[12px]">Funktion vorschlagen</div>
+          </div>
+        </label>
+        <label class="type-card cursor-pointer">
+          <input type="radio" name="typ" value="Kommentar" class="hidden">
+          <div class="border-2 border-[#E8E4DC] rounded-2xl p-4 text-center transition">
+            <div class="text-2xl">💬</div><div class="font-semibold text-[#1E2C1A] text-[14px] mt-1">Kommentar</div><div class="text-[#5F6B57] text-[12px]">Gedanken teilen</div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-semibold text-[#1E2C1A] text-[14px] mb-2">Name <span class="text-[#5F6B57] font-normal">(optional)</span></label>
+        <input id="name" type="text" class="w-full border border-[#E8E4DC] rounded-xl px-4 py-3 text-[15px]">
+      </div>
+      <div>
+        <label class="block font-semibold text-[#1E2C1A] text-[14px] mb-2">E-Mail <span class="text-[#5F6B57] font-normal">(optional)</span></label>
+        <input id="email" type="email" class="w-full border border-[#E8E4DC] rounded-xl px-4 py-3 text-[15px]">
+      </div>
+    </div>
+    <div>
+      <label class="block font-semibold text-[#1E2C1A] text-[14px] mb-2">Betreff *</label>
+      <input id="betreff" type="text" required class="w-full border border-[#E8E4DC] rounded-xl px-4 py-3 text-[15px]">
+    </div>
+    <div>
+      <label class="block font-semibold text-[#1E2C1A] text-[14px] mb-2">Nachricht *</label>
+      <textarea id="nachricht" rows="5" required class="w-full border border-[#E8E4DC] rounded-xl px-4 py-3 text-[15px] resize-none"></textarea>
+    </div>
+    <button type="submit" class="w-full bg-[#047857] text-white font-bold uppercase tracking-[0.5px] py-4 rounded-2xl" style="box-shadow:rgb(26,74,58) 0 5px 0 0">Nachricht senden</button>
+  </form>
+
+  <div class="text-center text-[#5F6B57] text-[14px] mt-6">
+    Oder direkt: <a href="mailto:info@hundezonen.ch" class="text-[#047857] font-semibold hover:underline">info@hundezonen.ch</a> · <a href="tel:+41817501911" class="text-[#047857] font-semibold hover:underline">+41 81 750 19 11</a>
+  </div>
+</main>
+
+<footer class="bg-[rgb(47,48,51)] text-white/60 text-[13px] py-6 text-center">
+  © 2026 HundeZonen Schweiz · <a href="agb.html" class="hover:text-white">AGB</a> · <a href="datenschutz.html" class="hover:text-white">Datenschutz</a>
+</footer>
+
+<script>
+  document.getElementById('kontaktForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var typ = document.querySelector('input[name="typ"]:checked').value;
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var betreff = document.getElementById('betreff').value;
+    var nachricht = document.getElementById('nachricht').value;
+    var subject = '[' + typ + '] ' + betreff;
+    var body = nachricht + '\n\n---\nName: ' + (name||'-') + '\nE-Mail: ' + (email||'-') + '\nTyp: ' + typ;
+    window.location.href = 'mailto:info@hundezonen.ch?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>

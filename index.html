@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HundeZonen – Entdecke die schönsten Hunderouten der Schweiz</title>
+<meta name="description" content="HundeZonen: Finde, teile und bewerte hundefreundliche Spazierrouten in der ganzen Schweiz. Mit Giftköder-Radar, Hunde-Services in der Nähe und einer Community von Hundefreunden.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --cream:#F7F4EF; --cream2:#FBFAF6; --ink:#1E2C1A; --ink2:#3D4A38; --muted:#5F6B57; --teal:#257564; --teal-d:#0e5648; --emerald:#047857; --emerald-d:#1A4A3A; --amber:#F59E0B; --line:#E8E4DC; }
+  body{ margin:0; font-family:Inter,"Inter Fallback",Roboto,Helvetica,sans-serif; color:var(--ink2); background:var(--cream); }
+  h1,h2,h3,.fredoka{ font-family:Fredoka,"Fredoka Fallback",sans-serif; }
+  .btn-primary{ box-shadow: rgb(26,74,58) 0px 5px 0px 0px; }
+  .btn-primary:active{ transform: translateY(4px); box-shadow: rgb(26,74,58) 0px 1px 0px 0px; }
+  .btn-ghost{ box-shadow: rgb(213,207,196) 0px 5px 0px 0px; }
+  .btn-ghost:active{ transform: translateY(4px); box-shadow: rgb(213,207,196) 0px 1px 0px 0px; }
+  .card{ box-shadow: rgba(30,44,26,0.06) 0px 1px 4px 0px; }
+  html{ scroll-behavior:smooth; }
+  .navlink{ position:relative; font-weight:500; font-size:15px; letter-spacing:.1px; color:#46523F; padding:.3rem .15rem; transition:color .2s ease; }
+  .navlink:hover{ color:#1E2C1A; }
+  .navlink::after{ content:""; position:absolute; left:0; right:100%; bottom:-3px; height:2px; background:#257564; border-radius:2px; transition:right .28s cubic-bezier(.4,0,.2,1); }
+  .navlink:hover::after{ right:0; }
+</style>
+</head>
+<body class="bg-[#F7F4EF] text-[#3D4A38]">
+
+<!-- ===== Header ===== -->
+<header class="border-b sticky top-0 backdrop-blur-xl bg-white/65 border-[rgba(30,44,26,0.12)] z-50" style="box-shadow: rgba(30,44,26,0.06) 0px 1px 4px 0px;">
+  <div class="ml-auto mr-auto max-w-6xl pt-0 pr-4 pb-0 pl-4">
+    <nav aria-label="Hauptnavigation" class="items-center flex relative min-h-[72px] gap-2">
+      <a href="#top" class="items-center flex font-semibold mr-6 text-[#257564] text-[26px] min-h-11 gap-2 fredoka">
+        <img src="hundezonen-assets/icon.png" alt="HundeZonen Logo" class="w-9 h-9 rounded-xl">
+        HundeZonen
+      </a>
+      <div class="items-center hidden md:flex grow justify-center gap-9">
+        <a href="#routen" class="navlink">Routen</a>
+        <a href="#radar" class="navlink">Giftköder-Radar</a>
+        <a href="#services" class="navlink">Services</a>
+        <a href="#community" class="navlink">Community</a>
+        <a href="#faq" class="navlink">FAQ</a>
+      </div>
+      <a href="#download" class="items-center flex font-semibold whitespace-nowrap ml-auto bg-[#257564] text-white text-[14.5px] tracking-[.2px] leading-6 min-h-[42px] pt-2 pr-5 pb-2 pl-5 rounded-full hover:bg-[#1e6354] transition" style="box-shadow: rgba(37,117,100,0.25) 0px 6px 16px -4px;">App laden</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== Hero ===== -->
+<section class="overflow-hidden relative bg-[#FBFAF6]">
+  <div class="pointer-events-none absolute left-0 top-0 right-0 bottom-0 z-0" style="background-image: radial-gradient(58% 50% at 80% 16%, rgba(110,212,188,0.35), rgba(0,0,0,0) 70%), radial-gradient(45% 40% at 10% 28%, rgba(255,210,150,0.25), rgba(0,0,0,0) 70%);"></div>
+  <div class="ml-auto mr-auto relative max-w-6xl pt-16 pr-4 pb-20 pl-4 z-10">
+    <div class="items-center grid gap-14 md:grid-cols-2">
+      <div>
+        <span class="inline-flex items-center gap-2 bg-white text-[#257564] text-[13px] font-semibold py-1.5 px-3 rounded-full card border border-[#E8E4DC]">🇨🇭 Für die ganze Schweiz · DE · FR · IT · EN · ES</span>
+        <h1 class="font-bold text-[#1E2C1A] text-[52px] md:text-[60px] tracking-[-1.2px] leading-[1.04] mt-5">Entdecke die schönsten <span class="text-[#257564]">Hunderouten</span> der Schweiz.</h1>
+        <p class="mt-5 text-[#3D4A38] text-[18px] leading-[1.6] max-w-[520px]"><strong class="font-bold text-[#1E2C1A]">HundeZonen</strong> zeigt dir hundefreundliche Spazierrouten in deiner Nähe – mit echten Bewertungen, Giftköder-Warnungen und allen Hunde-Services auf einer Karte.</p>
+        <div class="flex flex-wrap items-center mt-8 gap-3">
+          <a href="https://apps.apple.com/us/app/hundezonen/id6745336299" target="_blank" rel="noopener" aria-label="Im App Store laden">
+            <img src="hundezonen-assets/app-store.svg" alt="Download im App Store" class="h-[48px] w-auto block">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.lwebch.HundezonenSchweiz&pli=1" target="_blank" rel="noopener" aria-label="Bei Google Play laden">
+            <img src="hundezonen-assets/google-play.png" alt="Jetzt bei Google Play" class="h-[48px] w-auto block">
+          </a>
+        </div>
+        <div class="items-center flex flex-wrap mt-7 gap-6">
+          <span class="items-center flex text-[#5F6B57] text-[14px] gap-2">
+            <span class="text-[#F59E0B] text-[16px]">★★★★★</span> 4,8 · von Hundebesitzern geliebt
+          </span>
+          <span class="items-center flex text-[#5F6B57] text-[14px] gap-2">🐾 Tausende Routen schweizweit</span>
+        </div>
+      </div>
+      <div class="relative max-w-[400px] mx-auto md:ml-auto md:mr-0">
+        <div class="rounded-[2rem] overflow-hidden card border border-[#E8E4DC] rotate-1 aspect-[4/5]" style="box-shadow: rgba(30,44,26,0.18) 0px 20px 50px -20px;">
+          <img src="hundezonen-assets/hero.jpg" alt="Frau joggt mit ihrem Hund durch den herbstlichen Park" class="block w-full h-full object-cover">
+        </div>
+        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl card border border-[#E8E4DC] py-3 px-4 flex items-center gap-3">
+          <span class="text-2xl">🛡️</span>
+          <div>
+            <div class="font-bold text-[#1E2C1A] text-[14px] fredoka">Giftköder-Radar aktiv</div>
+            <div class="text-[#5F6B57] text-[12px]">Warnungen in Echtzeit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Problems ===== -->
+<section class="bg-[#F7F4EF] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Kennst du das?</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Gassi gehen sollte entspannt sein – ist es aber oft nicht.</p>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
+        <img src="hundezonen-assets/problem-routine.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
+        <div class="p-7 pt-5">
+          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Immer dieselbe Runde</h3>
+          <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Du läufst seit Monaten denselben Weg und weisst nicht, wo es schöne, hundefreundliche Alternativen gibt.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
+        <img src="hundezonen-assets/problem-radar.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
+        <div class="p-7 pt-5">
+          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Angst vor Giftködern</h3>
+          <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Ausgelegte Giftköder sind eine reale Gefahr – aber du erfährst meist erst davon, wenn es zu spät ist.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
+        <img src="hundezonen-assets/problem-services.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
+        <div class="p-7 pt-5">
+          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Wo ist der nächste Service?</h3>
+          <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Tierarzt, Hundeschule, Auslaufzone oder Shop in der Nähe? Die Infos sind über zwölf Webseiten verstreut.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Features ===== -->
+<section id="routen" class="bg-[#FBFAF6] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Alles für den perfekten Spaziergang</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[640px] mx-auto leading-[1.6]">Eine App statt zwölf offener Tabs – Routen, Sicherheit, Services und Community an einem Ort.</p>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="w-14 h-14 rounded-2xl overflow-hidden"><img src="hundezonen-assets/feat-routen.png" alt="" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Routen entdecken</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Hundefreundliche Spazierrouten in deiner Nähe – mit Karte, Distanz, Fotos und echten Bewertungen anderer Hundebesitzer.</p>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="w-14 h-14 rounded-2xl overflow-hidden"><img src="hundezonen-assets/feat-radar.png" alt="" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Giftköder-Radar</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Sieh auf einen Blick, wo Giftköder gemeldet wurden – und warne andere mit einem Tipp, wenn du etwas entdeckst.</p>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="w-14 h-14 rounded-2xl overflow-hidden"><img src="hundezonen-assets/feat-services.png" alt="" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Hunde-Services</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Tierärzte, Hundeschulen, Shops und Auslaufzonen – alle Services rund um deinen Hund auf einer Karte.</p>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="w-14 h-14 rounded-2xl overflow-hidden"><img src="hundezonen-assets/feat-teilen.png" alt="" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Eigene Routen teilen</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Lege deine Lieblingsrunde an, beschreibe sie und teile sie mit der Community. Sammle Likes und Favoriten.</p>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="w-14 h-14 rounded-2xl overflow-hidden"><img src="hundezonen-assets/feat-ki.png" alt="" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">KI-Assistent</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Fragen zu Hund, Erziehung oder zur passenden Route? Der integrierte KI-Chat hilft dir rund um die Uhr weiter.</p>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="w-14 h-14 rounded-2xl overflow-hidden"><img src="hundezonen-assets/feat-community.png" alt="" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Community & Feed</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Folge anderen Hundefreunden, teile Fotos und Videos deiner Spaziergänge und tausch dich aus – wie ein soziales Netzwerk für Hunde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== How it works ===== -->
+<section class="bg-[#F7F4EF] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-5xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">So funktioniert's</h2>
+    <div class="grid md:grid-cols-3 gap-8 mt-12">
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#047857] text-white flex items-center justify-center text-[22px] font-bold mx-auto fredoka">1</div>
+        <h3 class="font-semibold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Route finden</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Öffne die Karte und entdecke hundefreundliche Routen rund um deinen Standort.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#047857] text-white flex items-center justify-center text-[22px] font-bold mx-auto fredoka">2</div>
+        <h3 class="font-semibold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Losgehen</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Folge der Route, behalte den Giftköder-Radar im Blick und geniesse den Spaziergang.</p>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl bg-[#047857] text-white flex items-center justify-center text-[22px] font-bold mx-auto fredoka">3</div>
+        <h3 class="font-semibold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Bewerten & teilen</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Bewerte die Route, lade Fotos hoch und hilf anderen Hundebesitzern, die schönsten Wege zu finden.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Radar highlight ===== -->
+<section id="radar" class="bg-[#FBFAF6] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="rounded-[2rem] overflow-hidden card border border-[#E8E4DC] -rotate-1 w-full max-w-[360px] aspect-square mx-auto" style="box-shadow: rgba(30,44,26,0.18) 0px 16px 40px -18px;">
+        <video src="hundezonen-assets/radar.mp4" class="block w-full h-full object-cover" autoplay muted loop playsinline></video>
+      </div>
+      <div>
+        <span class="inline-flex items-center gap-2 bg-[#FDECEC] text-[#B91C1C] text-[13px] font-semibold py-1.5 px-3 rounded-full">🛡️ Sicherheit zuerst</span>
+        <h2 class="font-bold text-[#1E2C1A] text-[40px] tracking-[-0.8px] leading-[1.1] mt-4">Der Giftköder-Radar, der mitdenkt</h2>
+        <p class="mt-4 text-[#3D4A38] text-[17px] leading-[1.7]">Gemeldete Giftköder werden direkt auf der Karte angezeigt. Erhalte Warnungen für deine Region und melde selbst gefährliche Stellen – so schützen sich Hundebesitzer in der ganzen Schweiz gegenseitig.</p>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Echtzeit-Warnungen in deiner Nähe</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Mit einem Tipp neue Fundstellen melden</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Community-geprüft und immer aktuell</li>
+        </ul>
+        <a href="#download" class="btn-primary inline-flex items-center font-bold uppercase bg-[#047857] text-white text-[16px] gap-2 tracking-[0.5px] mt-8 pt-4 pr-7 pb-4 pl-7 rounded-2xl">Jetzt schützen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Screenshots ===== -->
+<section class="bg-[#F7F4EF] pt-20 pb-20 overflow-hidden">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">So sieht HundeZonen aus</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Ein Blick in die App – von der Routensuche bis zum Giftköder-Radar.</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-7 mt-12">
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-routen.webp" alt="Routen-Feed in der HundeZonen App" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Routen entdecken</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-detail.webp" alt="Routen-Details mit Services und Bewertung" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Alle Infos zur Route</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-services.webp" alt="Hunde-Services in der Nähe" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Services in der Nähe</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-create.webp" alt="Eigene Route erstellen" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Eigene Route erstellen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonials ===== -->
+<section id="community" class="bg-[#F7F4EF] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Das sagen Hundebesitzer wie du</h2>
+    <div class="grid md:grid-cols-3 gap-6 mt-12">
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="text-[#F59E0B] text-[16px]">★★★★★</div>
+        <p class="text-[#3D4A38] text-[15px] leading-[1.7] mt-3">«Endlich entdecke ich neue Wege, statt jeden Tag dieselbe Runde zu drehen. Bruno liebt es!»</p>
+        <div class="flex items-center gap-3 mt-5">
+          <div class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center">🐕</div>
+          <div><div class="font-semibold text-[#1E2C1A] text-[14px]">Sandra K.</div><div class="text-[#5F6B57] text-[13px]">Zürich</div></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="text-[#F59E0B] text-[16px]">★★★★★</div>
+        <p class="text-[#3D4A38] text-[15px] leading-[1.7] mt-3">«Der Giftköder-Radar gibt mir ein gutes Gefühl. Ich sehe sofort, wo ich vorsichtig sein muss.»</p>
+        <div class="flex items-center gap-3 mt-5">
+          <div class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center">🐩</div>
+          <div><div class="font-semibold text-[#1E2C1A] text-[14px]">Marco B.</div><div class="text-[#5F6B57] text-[13px]">Bern</div></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
+        <div class="text-[#F59E0B] text-[16px]">★★★★★</div>
+        <p class="text-[#3D4A38] text-[15px] leading-[1.7] mt-3">«Schöne Community und super praktisch, dass Tierärzte und Hundeschulen gleich auf der Karte sind.»</p>
+        <div class="flex items-center gap-3 mt-5">
+          <div class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center">🦮</div>
+          <div><div class="font-semibold text-[#1E2C1A] text-[14px]">Lena F.</div><div class="text-[#5F6B57] text-[13px]">Luzern</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Services strip ===== -->
+<section id="services" class="bg-[#FBFAF6] pt-16 pb-16">
+  <div class="ml-auto mr-auto max-w-5xl pr-4 pl-4 text-center">
+    <h2 class="font-bold text-[#1E2C1A] text-[34px] tracking-[-0.6px]">Verfügbar im DACH-Raum</h2>
+    <p class="text-[#5F6B57] text-[17px] mt-3 leading-[1.6] max-w-[620px] mx-auto">HundeZonen startet in der Schweiz, Deutschland und Österreich – mit weiteren Ländern in Planung.</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-6 text-[15px] font-semibold text-[#1E2C1A]">
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-5 card">🇨🇭 Schweiz</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-5 card">🇩🇪 Deutschland</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-5 card">🇦🇹 Österreich</span>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mt-5 text-[14px] font-semibold text-[#257564]">
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🗺️ Routen</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🛡️ Giftköder-Radar</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🏥 Services</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">👥 Community</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🤖 KI-Chat</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Privacy ===== -->
+<section id="privacy" class="bg-[#F7F4EF] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">🔒 Deine Privatsphäre, deine Wahl</span></span>
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Sichtbar oder völlig unsichtbar</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[640px] mx-auto leading-[1.6]">HundeZonen verkauft deine Daten nicht. Du entscheidest selbst, wie du die App nutzt – mit zwei Datenschutzmodi.</p>
+    <div class="grid md:grid-cols-2 gap-6 mt-12">
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-8">
+        <div class="w-12 h-12 rounded-2xl bg-[#E6F2EE] flex items-center justify-center text-2xl">👁️</div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Öffentlicher Modus</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Andere Nutzer können dich finden, dein Profil und deine veröffentlichten Routen sehen. Du interagierst ganz normal mit der Community.</p>
+      </div>
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-8">
+        <div class="w-12 h-12 rounded-2xl bg-[#1E2C1A] flex items-center justify-center text-2xl">🥷</div>
+        <h3 class="font-bold mt-5 mb-2 text-[#1E2C1A] text-[20px]">Privater Modus</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Du bist 100 % inkognito. Niemand sieht dich, dein Profil oder deine Routen – nur du selbst siehst deine gespeicherten Favoriten. Ideal, um die App ganz unsichtbar zu nutzen.</p>
+      </div>
+    </div>
+    <p class="text-center mt-8"><a href="datenschutz.html" class="font-semibold text-[#047857] hover:underline text-[15px]">Vollständige Datenschutzerklärung →</a></p>
+  </div>
+</section>
+
+<!-- ===== Pricing ===== -->
+<section id="preise" class="bg-[#F7F4EF] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-4xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Transparent und fair</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[560px] mx-auto leading-[1.6]">Kostenlos nutzbar – mit optionaler Unterstützung für die Weiterentwicklung.</p>
+    <div class="grid md:grid-cols-2 gap-6 mt-12 items-start">
+      <!-- Free -->
+      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-8">
+        <div class="font-bold text-[#1E2C1A] text-[22px] fredoka">Gratis</div>
+        <div class="flex items-end gap-1 mt-2"><span class="font-bold text-[#1E2C1A] text-[40px] fredoka">0 CHF</span></div>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Alle Routen entdecken</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Giftköder-Warnungen</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Hunde-Services finden</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Werbefrei</li>
+        </ul>
+        <a href="#download" class="btn-ghost block text-center font-bold uppercase bg-white border-[#D5CFC4] border-2 text-[#257564] text-[15px] tracking-[0.5px] mt-8 py-3 rounded-2xl">Gratis starten</a>
+      </div>
+      <!-- Subscriber -->
+      <div class="bg-[#047857] text-white rounded-3xl p-8 relative" style="box-shadow: rgba(26,74,58,0.3) 0px 18px 44px -18px;">
+        <span class="absolute top-6 right-6 bg-white/15 text-white text-[12px] font-semibold py-1 px-3 rounded-full">Beliebt</span>
+        <div class="font-bold text-white text-[22px] fredoka">Abonnent</div>
+        <div class="flex items-end gap-2 mt-2"><span class="font-bold text-white text-[40px] fredoka">5 CHF</span><span class="text-white/80 text-[15px] mb-2">/ 2 Monate</span></div>
+        <div class="text-white/75 text-[14px]">≈ 2.50 CHF pro Monat</div>
+        <ul class="mt-6 space-y-3">
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zu Routen-Videos</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Unbegrenzte Routen</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Laufende Updates</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zum KI-Chatbot</li>
+        </ul>
+        <a href="#download" class="btn-ghost block text-center font-bold uppercase bg-white text-[#047857] text-[15px] tracking-[0.5px] mt-8 py-3 rounded-2xl">Unterstützen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="bg-[#FBFAF6] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-3xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Häufige Fragen</h2>
+    <div class="mt-10 space-y-4">
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group" open>
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Was ist HundeZonen?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">HundeZonen ist eine App, in der du deine Lieblingsrouten zum Gassi gehen mit deinem Hund speichern kannst. Ausserdem entdeckst du Routen, die andere Nutzer in deiner Nähe erstellt haben – mit allen Infos, die du vor dem Spaziergang brauchst.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Wie funktioniert es?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Wenn du die App öffnest, erkennt sie automatisch deinen Standort und zeigt dir die nächstgelegenen Routen anderer Nutzer. Du siehst, ob es auf der Route Wasser, Schatten, Parkplätze, Restaurants oder andere nützliche Services gibt.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">In welchen Ländern ist die App verfügbar?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">HundeZonen ist zunächst in der Schweiz, in Deutschland und in Österreich verfügbar. Später folgen weitere Länder – abhängig von der Resonanz der Nutzer.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Was macht der KI-Chatbot?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Der Chatbot hilft dir bei allem rund um deinen Hund. Du kannst ihn zum Beispiel fragen: „Finde einen Hundetrainer in meiner Nähe" oder „Analysiere dieses Foto und sag mir, welche Rasse mein Hund ist".</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Ist HundeZonen kostenlos?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Ja, die Grundnutzung ist komplett kostenlos. Es gibt ein optionales Abo für 5 CHF alle zwei Monate (ca. 2 CHF im Monat), um die Weiterentwicklung zu unterstützen.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== In memory of Don ===== -->
+<section class="bg-[#F7F4EF] pt-16 pb-16">
+  <div class="max-w-2xl mx-auto px-4 text-center">
+    <div class="inline-block rounded-full overflow-hidden border-4 border-white w-28 h-28 card">
+      <img src="hundezonen-assets/don.webp" alt="Don" class="w-full h-full object-cover">
+    </div>
+    <h2 class="font-bold text-[#1E2C1A] text-[28px] mt-5 fredoka">Für Don 🐾</h2>
+    <p class="text-[#5F6B57] text-[17px] mt-3 leading-[1.7] italic">In Erinnerung an meinen Hund Don – meinen treuen Begleiter, der diese App inspiriert hat.</p>
+  </div>
+</section>
+
+<!-- ===== Final CTA / Download ===== -->
+<section id="download" class="bg-[#FBFAF6] pt-20 pb-24">
+  <div class="ml-auto mr-auto max-w-4xl pr-4 pl-4">
+    <div class="relative overflow-hidden rounded-[2.5rem] bg-[#047857] text-white text-center py-16 px-6" style="box-shadow: rgba(26,74,58,0.35) 0px 24px 60px -20px;">
+      <div class="pointer-events-none absolute inset-0" style="background-image: radial-gradient(50% 50% at 80% 10%, rgba(110,212,188,0.4), rgba(0,0,0,0) 70%);"></div>
+      <div class="relative">
+        <h2 class="font-bold text-white text-[40px] md:text-[46px] tracking-[-0.9px] leading-[1.08]">Bereit, die besten Routen zu entdecken?</h2>
+        <p class="text-white/85 text-[18px] mt-4 max-w-[560px] mx-auto leading-[1.6]">Lade HundeZonen jetzt kostenlos herunter und werde Teil der Community.</p>
+        <div class="flex flex-wrap items-center justify-center gap-3 mt-9">
+          <a href="https://apps.apple.com/us/app/hundezonen/id6745336299" target="_blank" rel="noopener" aria-label="Im App Store laden">
+            <img src="hundezonen-assets/app-store.svg" alt="Download im App Store" class="h-[52px] w-auto block">
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.lwebch.HundezonenSchweiz&pli=1" target="_blank" rel="noopener" aria-label="Bei Google Play laden">
+            <img src="hundezonen-assets/google-play.png" alt="Jetzt bei Google Play" class="h-[52px] w-auto block">
+          </a>
+        </div>
+        <p class="text-white/70 text-[13px] mt-6">Gratis · 🇨🇭 Schweiz · 🇩🇪 Deutschland · 🇦🇹 Österreich</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="bg-[rgb(47,48,51)] text-[rgb(241,240,243)] pt-12 pb-6">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-2 font-semibold text-[20px] fredoka">
+          <img src="hundezonen-assets/icon.png" alt="HundeZonen" class="w-8 h-8 rounded-lg"> HundeZonen
+        </div>
+        <p class="text-white/60 text-[14px] mt-3 leading-[1.6]">Die App für hundefreundliche Routen, Sicherheit und Community im DACH-Raum.</p>
+        <div class="flex items-center gap-3 mt-5">
+          <a href="https://www.youtube.com/@hundezonenschweiz8758/shorts" target="_blank" rel="noopener" aria-label="YouTube" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0033"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@hundezonenschweiz.ch" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M16.6 5.8a4.8 4.8 0 0 1-1-.1V14a5.2 5.2 0 1 1-5.2-5.2c.2 0 .4 0 .5.1v2.6a2.6 2.6 0 1 0 1.8 2.5V2h2.5a4.8 4.8 0 0 0 4.3 4.3v2.5a7.3 7.3 0 0 1-2.9-.6V5.8z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="font-semibold text-[15px] mb-3">App</div>
+        <ul class="space-y-2 text-white/60 text-[14px]">
+          <li><a href="#routen" class="hover:text-white">Routen</a></li>
+          <li><a href="#radar" class="hover:text-white">Giftköder-Radar</a></li>
+          <li><a href="#services" class="hover:text-white">Services</a></li>
+          <li><a href="#preise" class="hover:text-white">Preise</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold text-[15px] mb-3">Rechtliches</div>
+        <ul class="space-y-2 text-white/60 text-[14px]">
+          <li><a href="agb.html" class="hover:text-white">AGB</a></li>
+          <li><a href="datenschutz.html" class="hover:text-white">Datenschutz</a></li>
+          <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-semibold text-[15px] mb-3">Kontakt</div>
+        <ul class="space-y-2 text-white/60 text-[14px]">
+          <li><a href="mailto:info@hundezonen.ch" class="hover:text-white">info@hundezonen.ch</a></li>
+          <li><a href="tel:+41817501911" class="hover:text-white">+41 81 750 19 11</a></li>
+        </ul>
+        <div class="font-semibold text-[15px] mt-5 mb-2">Sprachen</div>
+        <p class="text-white/60 text-[14px]">DE · FR · IT · EN · ES</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-10 pt-6 text-white/50 text-[13px] flex flex-col sm:flex-row justify-between gap-2">
+      <span>© 2026 HundeZonen Schweiz</span>
+      <span>Mit 🐾 im DACH-Raum gemacht</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
