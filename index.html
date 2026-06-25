@@ -353,14 +353,33 @@
       '</div>';
   }
 
-  var PREVIEW_SECONDS = 5;
+  var PREVIEW_SECONDS = 10;
+
+  // Pausiert laufende Vorschau-Videos automatisch, sobald sie aus dem Blick scrollen
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.intersectionRatio < 0.5) {
+        var v = entry.target;
+        if (!v.paused && !v.ended) v.pause();
+      }
+    });
+  }, { threshold: [0, 0.5, 1] }) : null;
+
+  // Play/Pause-Icon umschalten (beim Pausieren dauerhaft sichtbar, beim Abspielen nur on hover)
+  function setToggleIcon(box, playing) {
+    var icon = box.querySelector('.toggle-icon');
+    if (!icon) return;
+    icon.textContent = playing ? '⏸' : '▶';
+    if (playing) { icon.classList.add('opacity-0'); icon.classList.remove('opacity-100'); }
+    else { icon.classList.remove('opacity-0'); icon.classList.add('opacity-100'); }
+  }
 
   // End-Card nach der Vorschau: Hinweis "in der App weiterschauen"
   function showEndCard(box, video) {
-    if (video) { try { video.pause(); } catch (e) {} }
+    if (video) { try { video.pause(); } catch (e) {} if (io) io.unobserve(video); }
     var end = document.createElement('a');
     end.href = '#download';
-    end.className = 'endcard absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/65 backdrop-blur-sm text-white text-center px-4';
+    end.className = 'endcard absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/65 backdrop-blur-sm text-white text-center px-4 z-20';
     end.innerHTML =
       '<span class="text-[32px]">🐾</span>' +
       '<span class="text-[14px] font-semibold leading-tight">Das ganze Video gibt’s<br>in der HundeZonen-App</span>' +
@@ -368,34 +387,51 @@
     box.appendChild(end);
   }
 
-  // 5-Sekunden-Vorschau abspielen, danach End-Card zeigen
+  // 10-Sekunden-Vorschau abspielen, danach End-Card zeigen
   function playPreview(box, url) {
     box.innerHTML =
-      '<video src="' + esc(url) + '#t=0.1' + '" class="block w-full aspect-[4/3] object-cover bg-black" ' +
-      'playsinline preload="metadata"></video>';
+      '<video src="' + esc(url) + '#t=0.1" class="block w-full aspect-[4/3] object-cover bg-black" playsinline preload="metadata"></video>' +
+      '<button type="button" class="preview-toggle absolute inset-0 flex items-center justify-center group cursor-pointer" aria-label="Pause / Play">' +
+        '<span class="toggle-icon w-14 h-14 rounded-full bg-black/45 backdrop-blur flex items-center justify-center text-white text-[20px] opacity-0 group-hover:opacity-100 transition">⏸</span>' +
+      '</button>';
     var video = box.querySelector('video');
     var stopped = false;
+
     function stop() {
       if (stopped) return;
       stopped = true;
       showEndCard(box, video);
     }
-    var timer = setTimeout(stop, PREVIEW_SECONDS * 1000);
+
     video.addEventListener('timeupdate', function () {
-      if (video.currentTime >= PREVIEW_SECONDS) { clearTimeout(timer); stop(); }
+      if (video.currentTime >= PREVIEW_SECONDS) stop();
     });
-    video.addEventListener('ended', function () { clearTimeout(timer); stop(); });
+    video.addEventListener('ended', stop);
+    video.addEventListener('play',  function () { setToggleIcon(box, true); });
+    video.addEventListener('pause', function () { if (!stopped) setToggleIcon(box, false); });
+
+    if (io) io.observe(video);
+
     var p = video.play();
     if (p && p.catch) {
       p.catch(function () {
         // Falls Autoplay mit Ton blockiert wird: stumm erneut versuchen
         video.muted = true;
-        video.play().catch(function () { clearTimeout(timer); stop(); });
+        video.play().catch(stop);
       });
     }
   }
 
   grid.addEventListener('click', function (e) {
+    // Während der Wiedergabe: Klick pausiert / setzt fort
+    var toggle = e.target.closest('.preview-toggle');
+    if (toggle) {
+      e.preventDefault();
+      var v = toggle.closest('.media-box').querySelector('video');
+      if (v) { if (v.paused) v.play(); else v.pause(); }
+      return;
+    }
+    // Erster Klick auf den Play-Button: Vorschau starten
     var btn = e.target.closest('[data-video]');
     if (!btn) return;
     e.preventDefault();
