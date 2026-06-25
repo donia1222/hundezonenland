@@ -219,6 +219,134 @@
   </div>
 </section>
 
+<!-- ===== Neueste Routen ===== -->
+<section id="neueste-routen" class="bg-[#FBFAF6] pt-20 pb-20">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">🗺️ Frisch aus der Community</span></span>
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Die neuesten Routen</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Diese Spazierrouten wurden zuletzt von Hundebesitzern hinzugefügt – täglich kommen neue dazu.</p>
+
+    <div id="routes-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <!-- Skeletons (werden per JS ersetzt) -->
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
+        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
+      </div>
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
+        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
+      </div>
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
+        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
+      </div>
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
+        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="#download" class="btn-primary inline-flex items-center font-bold uppercase bg-[#047857] text-white text-[16px] gap-2 tracking-[0.5px] pt-4 pr-7 pb-4 pl-7 rounded-2xl">Alle Routen in der App ansehen →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var grid = document.getElementById('routes-grid');
+  if (!grid) return;
+
+  var FEATURES = {
+    agua:                { icon: '💧', label: 'Wasser' },
+    aparcamiento:        { icon: '🅿️', label: 'Parkplatz' },
+    arbolesConSombra:    { icon: '🌳', label: 'Schatten' },
+    restaurantesCercanos:{ icon: '🍽️', label: 'Restaurants' },
+    buenCaminoParaPerros:{ icon: '🐾', label: 'Hundefreundlich' },
+    muyFrecuentado:      { icon: '👥', label: 'Belebt' }
+  };
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+    });
+  }
+
+  function locality(addr) {
+    if (!addr) return 'Route';
+    var parts = addr.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+    if (parts.length >= 2) return parts[parts.length - 2]; // Ort
+    return parts[0];
+  }
+
+  function formatDate(s) {
+    if (!s) return '';
+    var d = new Date(s.replace(' ', 'T'));
+    if (isNaN(d)) return '';
+    return ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear();
+  }
+
+  function card(r) {
+    var img = (r.images && r.images.length) ? r.images[0] : null;
+    var title = (r.titulo && r.titulo.trim()) ? r.titulo.trim() : locality(r.start_address);
+    var dist = (typeof r.distance === 'number') ? r.distance.toFixed(1).replace('.', ',') + ' km' : '';
+
+    var chips = '';
+    if (r.features) {
+      Object.keys(FEATURES).forEach(function (k) {
+        if (r.features[k]) {
+          chips += '<span class="inline-flex items-center gap-1 bg-[#F2EFE8] text-[#46523F] text-[12px] font-medium py-1 px-2.5 rounded-full">' +
+                   FEATURES[k].icon + ' ' + esc(FEATURES[k].label) + '</span>';
+        }
+      });
+    }
+
+    var media = img
+      ? '<img src="' + esc(img) + '" alt="Spazierroute in ' + esc(title) + '" loading="lazy" class="block w-full aspect-[4/3] object-cover bg-[#F2EFE8]">'
+      : '<div class="w-full aspect-[4/3] bg-gradient-to-br from-[#E6F2EE] to-[#D7EAE3] flex items-center justify-center text-[42px]">🐾</div>';
+
+    var avatar = r.avatar
+      ? '<img src="' + esc(r.avatar) + '" alt="" loading="lazy" class="w-7 h-7 rounded-full object-cover bg-[#E6F2EE]">'
+      : '<span class="w-7 h-7 rounded-full bg-[#E6F2EE] flex items-center justify-center text-[13px]">🐕</span>';
+
+    return '' +
+      '<article class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden flex flex-col">' +
+        '<div class="relative">' + media +
+          '<span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#1E2C1A] text-[12px] font-bold py-1 px-2.5 rounded-full card">📍 ' + esc(dist) + '</span>' +
+        '</div>' +
+        '<div class="p-5 flex flex-col grow">' +
+          '<h3 class="font-bold text-[#1E2C1A] text-[18px] leading-[1.3] truncate">' + esc(title) + '</h3>' +
+          '<p class="text-[#5F6B57] text-[13px] mt-1 truncate">' + esc(r.start_address || '') + '</p>' +
+          (chips ? '<div class="flex flex-wrap gap-1.5 mt-3">' + chips + '</div>' : '') +
+          '<div class="flex items-center gap-2 mt-auto pt-4">' + avatar +
+            '<span class="text-[#3D4A38] text-[13px] font-medium truncate">' + esc(r.username || 'Hundefreund') + '</span>' +
+            '<span class="text-[#9AA38F] text-[12px] ml-auto whitespace-nowrap">' + esc(formatDate(r.created_at)) + '</span>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function showFallback() {
+    // Statt die Sektion zu verstecken: freundlicher Hinweis + CTA bleiben sichtbar
+    grid.className = 'mt-12';
+    grid.innerHTML =
+      '<div class="bg-white rounded-3xl card border border-[#E8E4DC] p-10 text-center max-w-[560px] mx-auto">' +
+        '<div class="text-[40px]">🐾</div>' +
+        '<p class="text-[#3D4A38] text-[16px] mt-3 leading-[1.6]">Die neuesten Routen entdeckst du direkt in der App.</p>' +
+      '</div>';
+  }
+
+  fetch('https://web.lweb.ch/get_all_routes.php')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      var routes = (data && data.rutas) ? data.rutas : [];
+      if (!routes.length) { showFallback(); return; }
+      grid.innerHTML = routes.slice(0, 4).map(card).join('');
+    })
+    .catch(showFallback);
+})();
+</script>
+
 <!-- ===== Radar highlight ===== -->
 <section id="radar" class="bg-[#FBFAF6] pt-20 pb-20">
   <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
