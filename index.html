@@ -46,6 +46,8 @@
   .navlink:hover{ color:#1E2C1A; }
   .navlink::after{ content:""; position:absolute; left:0; right:100%; bottom:-3px; height:2px; background:#257564; border-radius:2px; transition:right .28s cubic-bezier(.4,0,.2,1); }
   .navlink:hover::after{ right:0; }
+  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
 </style>
 </head>
 <body class="bg-[#F7F4EF] text-[#3D4A38]">
@@ -226,21 +228,21 @@
     <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Die neuesten Routen</h2>
     <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Diese Spazierrouten wurden zuletzt von Hundebesitzern hinzugefügt – täglich kommen neue dazu.</p>
 
-    <div id="routes-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+    <div id="routes-grid" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 mt-12 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:overflow-visible sm:mx-0 sm:px-0">
       <!-- Skeletons (werden per JS ersetzt) -->
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
         <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
         <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
       </div>
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
         <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
         <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
       </div>
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
         <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
         <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
       </div>
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse">
+      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
         <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
         <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
       </div>
@@ -326,7 +328,7 @@
       : '<span class="w-7 h-7 rounded-full bg-[#E6F2EE] flex items-center justify-center text-[13px]">🐕</span>';
 
     return '' +
-      '<article class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden flex flex-col">' +
+      '<article class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden flex flex-col snap-start shrink-0 w-[80%] sm:w-auto">' +
         '<div class="relative">' +
           '<div class="media-box relative">' + media + '</div>' +
           '<span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#1E2C1A] text-[12px] font-bold py-1 px-2.5 rounded-full card z-10">📍 ' + esc(dist) + '</span>' +
