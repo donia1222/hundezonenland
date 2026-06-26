@@ -67,10 +67,49 @@
         <a href="#community" class="navlink">Community</a>
         <a href="#faq" class="navlink">FAQ</a>
       </div>
-      <a href="#download" class="items-center flex font-semibold whitespace-nowrap ml-auto bg-[#257564] text-white text-[14.5px] tracking-[.2px] leading-6 min-h-[42px] pt-2 pr-5 pb-2 pl-5 rounded-full hover:bg-[#1e6354] transition" style="box-shadow: rgba(37,117,100,0.25) 0px 6px 16px -4px;">App laden</a>
+      <a href="#download" class="hidden md:flex items-center font-semibold whitespace-nowrap ml-auto bg-[#257564] text-white text-[14.5px] tracking-[.2px] leading-6 min-h-[42px] pt-2 pr-5 pb-2 pl-5 rounded-full hover:bg-[#1e6354] transition" style="box-shadow: rgba(37,117,100,0.25) 0px 6px 16px -4px;">App laden</a>
+      <button id="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden items-center justify-center flex shrink-0 ml-auto w-11 h-11 rounded-full border border-[rgba(30,44,26,0.12)] bg-white text-[#257564] hover:bg-[#F2F7F5] transition">
+        <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
     </nav>
+    <!-- Mobile-Menü -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-[rgba(30,44,26,0.1)] pb-3">
+      <div class="flex flex-col pt-2">
+        <a href="#routen" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Routen</a>
+        <a href="#radar" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Giftköder-Radar</a>
+        <a href="#services" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Services</a>
+        <a href="#community" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Community</a>
+        <a href="#faq" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium">FAQ</a>
+        <a href="#download" class="mobile-navlink items-center justify-center flex font-semibold mt-4 bg-[#257564] text-white text-[15px] min-h-[46px] rounded-full hover:bg-[#1e6354] transition">App laden</a>
+      </div>
+    </div>
   </div>
 </header>
+
+<script>
+(function(){
+  var btn = document.getElementById('menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  var iconOpen = document.getElementById('menu-icon-open');
+  var iconClose = document.getElementById('menu-icon-close');
+  if(!btn || !menu) return;
+  function setOpen(open){
+    menu.classList.toggle('hidden', !open);
+    iconOpen.classList.toggle('hidden', open);
+    iconClose.classList.toggle('hidden', !open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+  }
+  btn.addEventListener('click', function(){
+    setOpen(menu.classList.contains('hidden'));
+  });
+  // Beim Klick auf einen Link schließen
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ setOpen(false); });
+  });
+})();
+</script>
 
 <main id="top">
 
@@ -80,8 +119,7 @@
   <div class="ml-auto mr-auto relative max-w-6xl pt-16 pr-4 pb-20 pl-4 z-10">
     <div class="items-center grid gap-14 md:grid-cols-2">
       <div>
-        <span class="inline-flex items-center gap-2 bg-white text-[#257564] text-[13px] font-semibold py-1.5 px-3 rounded-full card border border-[#E8E4DC]">🇨🇭 Für die ganze Schweiz · DE · FR · IT · EN · ES</span>
-        <h1 class="font-bold text-[#1E2C1A] text-[52px] md:text-[60px] tracking-[-1.2px] leading-[1.04] mt-5">Entdecke die schönsten <span class="text-[#257564]">Hunderouten</span> der Schweiz.</h1>
+        <h1 class="font-bold text-[#1E2C1A] text-[52px] md:text-[60px] tracking-[-1.2px] leading-[1.04]">Entdecke die schönsten <span class="text-[#257564]">Hunderouten</span> der Schweiz.</h1>
         <p class="mt-5 text-[#3D4A38] text-[18px] leading-[1.6] max-w-[520px]"><strong class="font-bold text-[#1E2C1A]">HundeZonen</strong> zeigt dir hundefreundliche Spazierrouten in deiner Nähe – mit echten Bewertungen, Giftköder-Warnungen und allen Hunde-Services auf einer Karte.</p>
         <div class="flex flex-wrap items-center mt-8 gap-3">
           <a href="https://apps.apple.com/us/app/hundezonen/id6745336299" target="_blank" rel="noopener" aria-label="Im App Store laden">
@@ -101,13 +139,6 @@
       <div class="relative max-w-[400px] mx-auto md:ml-auto md:mr-0">
         <div class="rounded-[2rem] overflow-hidden card border border-[#E8E4DC] rotate-1 aspect-[4/5]" style="box-shadow: rgba(30,44,26,0.18) 0px 20px 50px -20px;">
           <img src="hundezonen-assets/hero.jpg" alt="Frau joggt mit ihrem Hund durch den herbstlichen Park" class="block w-full h-full object-cover">
-        </div>
-        <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl card border border-[#E8E4DC] py-3 px-4 flex items-center gap-3">
-          <span class="text-2xl">🛡️</span>
-          <div>
-            <div class="font-bold text-[#1E2C1A] text-[14px] fredoka">Giftköder-Radar aktiv</div>
-            <div class="text-[#5F6B57] text-[12px]">Warnungen in Echtzeit</div>
-          </div>
         </div>
       </div>
     </div>
