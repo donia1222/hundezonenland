@@ -53,7 +53,7 @@
 <body class="bg-[#F7F4EF] text-[#3D4A38]">
 
 <!-- ===== Header ===== -->
-<header class="static bg-[#FBFAF6] md:sticky md:top-0 md:backdrop-blur-xl md:bg-white/65 md:border-b md:border-[rgba(30,44,26,0.12)] md:shadow-[0_1px_4px_0_rgba(30,44,26,0.06)] z-50">
+<header class="absolute inset-x-0 top-0 md:sticky md:backdrop-blur-xl md:bg-white/65 md:border-b md:border-[rgba(30,44,26,0.12)] md:shadow-[0_1px_4px_0_rgba(30,44,26,0.06)] z-50">
   <div class="ml-auto mr-auto max-w-6xl pt-0 pr-4 pb-0 pl-4">
     <nav aria-label="Hauptnavigation" class="items-center flex relative min-h-[72px] gap-2">
       <a href="#top" class="items-center flex font-semibold mr-6 text-[#257564] text-[26px] min-h-11 gap-2 fredoka">
@@ -74,7 +74,7 @@
       </button>
     </nav>
     <!-- Mobile-Menü -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-[rgba(30,44,26,0.1)] pb-3">
+    <div id="mobile-menu" class="md:hidden hidden mt-2 px-4 rounded-2xl bg-white shadow-[0_10px_30px_-10px_rgba(30,44,26,0.25)] border border-[rgba(30,44,26,0.1)] pb-3">
       <div class="flex flex-col pt-2">
         <a href="#routen" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Routen</a>
         <a href="#radar" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Giftköder-Radar</a>
@@ -116,7 +116,7 @@
 <!-- ===== Hero ===== -->
 <section class="overflow-hidden relative bg-[#FBFAF6]">
   <div class="pointer-events-none absolute left-0 top-0 right-0 bottom-0 z-0" style="background-image: radial-gradient(58% 50% at 80% 16%, rgba(110,212,188,0.35), rgba(0,0,0,0) 70%), radial-gradient(45% 40% at 10% 28%, rgba(255,210,150,0.25), rgba(0,0,0,0) 70%);"></div>
-  <div class="ml-auto mr-auto relative max-w-6xl pt-16 pr-4 pb-20 pl-4 z-10">
+  <div class="ml-auto mr-auto relative max-w-6xl pt-28 md:pt-16 pr-4 pb-20 pl-4 z-10">
     <div class="items-center grid gap-14 md:grid-cols-2">
       <div>
         <h1 class="font-bold text-[#1E2C1A] text-[52px] md:text-[60px] tracking-[-1.2px] leading-[1.04]">Entdecke die schönsten <span class="text-[#257564]">Hunderouten</span> der Schweiz.</h1>
