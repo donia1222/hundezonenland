@@ -62,6 +62,7 @@
       </a>
       <div class="items-center hidden md:flex grow justify-center gap-9">
         <a href="#routen" class="navlink">Routen</a>
+        <a href="#karte" class="navlink">Karte</a>
         <a href="#radar" class="navlink">Giftköder-Radar</a>
         <a href="#services" class="navlink">Services</a>
         <a href="#community" class="navlink">Community</a>
@@ -77,6 +78,7 @@
     <div id="mobile-menu" class="md:hidden hidden mt-2 px-4 rounded-2xl bg-white shadow-[0_10px_30px_-10px_rgba(30,44,26,0.25)] border border-[rgba(30,44,26,0.1)] pb-3">
       <div class="flex flex-col pt-2">
         <a href="#routen" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Routen</a>
+        <a href="#karte" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Karte</a>
         <a href="#radar" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Giftköder-Radar</a>
         <a href="#services" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Services</a>
         <a href="#community" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Community</a>
@@ -203,9 +205,9 @@
         <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Lege deine Lieblingsrunde an, beschreibe sie und teile sie mit der Community. Sammle Likes und Favoriten.</p>
       </div>
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
-        <div class="flex items-center"><img src="hundezonen-assets/icon-ki.png" alt="" class="h-[60px] w-auto object-contain"></div>
-        <h3 class="font-bold mt-2 mb-2 text-[#1E2C1A] text-[20px]">KI-Assistent</h3>
-        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Fragen zu Hund, Erziehung oder zur passenden Route? Der integrierte KI-Chat hilft dir rund um die Uhr weiter.</p>
+        <div class="flex items-center h-[60px]"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#257564" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.2 7.8 14.1 14.1 7.8 16.2 9.9 9.9 16.2 7.8"/></svg></div>
+        <h3 class="font-bold mt-2 mb-2 text-[#1E2C1A] text-[20px]">Interaktive Karte</h3>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Rundwege ohne Strassen und immer am Wasser, berechnet aus den offiziellen Wanderwegen der Schweiz – auch dort, wo noch niemand eine Route eingetragen hat.</p>
       </div>
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
         <div class="flex items-center"><img src="hundezonen-assets/icon-community.png" alt="" class="h-[60px] w-auto object-contain"></div>
@@ -483,25 +485,25 @@
 })();
 </script>
 
-<!-- ===== KI-Chat / Vorschläge ===== -->
-<section id="ki-chat" class="bg-[#F7F4EF] pt-20 pb-20">
+<!-- ===== Interaktive Karte ===== -->
+<section id="karte" class="bg-[#F7F4EF] pt-20 pb-20">
   <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
-    <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">✨ KI-Assistent rund um die Uhr</span></span>
-    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Fragen zum Hund? Frag einfach den KI-Chat</h2>
-    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[660px] mx-auto leading-[1.6]">Erziehung, Ernährung, Gesundheit oder Rezepte – der integrierte KI-Chat hilft dir rund um die Uhr weiter. Und wenn du nicht weisst, wie du anfangen sollst, liefern dir fertige Vorschläge den passenden Einstieg.</p>
+    <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">✨ Neu in Version 2.0</span></span>
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Wege, die noch keiner kennt</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[680px] mx-auto leading-[1.6]">Die interaktive Karte baut dir Rundwege, die an einem Parkplatz beginnen und dort wieder enden – aus den offiziellen Wanderwegen von swisstopo und aus OpenStreetMap. Auch dort, wo noch niemand eine Route eingetragen hat.</p>
     <div class="grid md:grid-cols-2 gap-6 mt-12 max-w-[860px] mx-auto">
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <div class="flex items-center justify-center bg-[#EAF4F0] pt-8 px-8"><img src="hundezonen-assets/screen-vorschlaege.png" alt="Themen-Kategorien im KI-Chat" class="block w-auto max-h-[440px] rounded-[1.4rem]" style="box-shadow: rgba(30,44,26,0.18) 0px 14px 36px -16px;"></div>
+        <div class="flex items-center justify-center bg-[#EAF4F0] pt-8 px-8"><img src="hundezonen-assets/screen-wege.jpg" alt="Gefundene Rundwege in der interaktiven Karte" loading="lazy" class="block w-auto max-h-[440px] rounded-[1.4rem]" style="box-shadow: rgba(30,44,26,0.18) 0px 14px 36px -16px;"></div>
         <div class="p-7 pt-5">
-          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Themen für jede Situation</h3>
-          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Hundetraining, Ernährung, Gesundheit, Rezepte oder die Google-Suche nach Orten – wähle einfach das passende Thema und der Chat ist startklar.</p>
+          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Alles gemessen, nichts geschätzt</h3>
+          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Zu jedem Weg steht, wie viele Kilometer er hat, wie viel davon durch den Wald führt, ob er eine Strasse kreuzt, ob er am Wasser entlangläuft und wie weit der Parkplatz entfernt ist.</p>
         </div>
       </div>
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <div class="flex items-center justify-center bg-[#EAF4F0] pt-8 px-8"><img src="hundezonen-assets/screen-fragen.png" alt="Fertige Fragen im KI-Chat" class="block w-auto max-h-[440px] rounded-[1.4rem]" style="box-shadow: rgba(30,44,26,0.18) 0px 14px 36px -16px;"></div>
+        <div class="flex items-center justify-center bg-[#EAF4F0] pt-8 px-8"><img src="hundezonen-assets/screen-route.jpg" alt="Alle Infos zu einer Route" loading="lazy" class="block w-auto max-h-[440px] rounded-[1.4rem]" style="box-shadow: rgba(30,44,26,0.18) 0px 14px 36px -16px;"></div>
         <div class="p-7 pt-5">
-          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Fertige Fragen mit einem Tipp</h3>
-          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Kein langes Tippen: Wähle eine der vorbereiteten Fragen mit Bild und erhalte sofort eine hilfreiche Antwort – ideal, um schnell loszulegen.</p>
+          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Du weisst, was dich erwartet</h3>
+          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Schatten, Wasser, Parkplatz und ein Video vom Weg – alles schon vor der Abfahrt. Und der Knopf bringt dich direkt zum Start.</p>
         </div>
       </div>
     </div>
@@ -534,31 +536,31 @@
 <section class="bg-[#F7F4EF] pt-20 pb-20 overflow-hidden">
   <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
     <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">So sieht HundeZonen aus</h2>
-    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Ein Blick in die App – von der Routensuche bis zum Giftköder-Radar.</p>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Ein Blick in die App – vom täglichen Vorschlag bis zur Community.</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-7 mt-12">
       <div class="flex flex-col items-center">
         <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-routen.webp" alt="Routen-Feed in der HundeZonen App" class="block w-full h-auto">
+          <img src="hundezonen-assets/screen-heute.jpg" alt="Tagesvorschlag in deiner Nähe" loading="lazy" class="block w-full h-auto">
         </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Routen entdecken</div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Jeden Tag ein neuer Weg</div>
       </div>
       <div class="flex flex-col items-center">
         <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-detail.webp" alt="Routen-Details mit Services und Bewertung" class="block w-full h-auto">
+          <img src="hundezonen-assets/screen-karte.jpg" alt="Wege, Videos und Services auf einer Karte" loading="lazy" class="block w-full h-auto">
         </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Alle Infos zur Route</div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Alles auf einer Karte</div>
       </div>
       <div class="flex flex-col items-center">
         <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-services.webp" alt="Hunde-Services in der Nähe" class="block w-full h-auto">
+          <img src="hundezonen-assets/screen-wege.jpg" alt="Gefundene Rundwege in der interaktiven Karte" loading="lazy" class="block w-full h-auto">
         </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Services in der Nähe</div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Wege, die noch keiner kennt</div>
       </div>
       <div class="flex flex-col items-center">
         <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-create.webp" alt="Eigene Route erstellen" class="block w-full h-auto">
+          <img src="hundezonen-assets/screen-community.jpg" alt="Community-Feed mit Fotos und Videos" loading="lazy" class="block w-full h-auto">
         </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Eigene Route erstellen</div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Community</div>
       </div>
     </div>
   </div>
@@ -612,7 +614,7 @@
       <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🛡️ Giftköder-Radar</span>
       <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🏥 Services</span>
       <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">👥 Community</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🤖 KI-Chat</span>
+      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🧭 Interaktive Karte</span>
     </div>
   </div>
 </section>
@@ -671,7 +673,7 @@
           <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zu Routen-Videos</li>
           <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Unbegrenzte Routen</li>
           <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Laufende Updates</li>
-          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zum KI-Chatbot</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zur interaktiven Karte</li>
         </ul>
         <a href="#download" class="btn-ghost block text-center font-bold uppercase bg-white text-[#047857] text-[15px] tracking-[0.5px] mt-8 py-3 rounded-2xl">Unterstützen</a>
       </div>
@@ -697,8 +699,8 @@
         <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">HundeZonen ist zunächst in der Schweiz, in Deutschland und in Österreich verfügbar. Später folgen weitere Länder – abhängig von der Resonanz der Nutzer.</p>
       </details>
       <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
-        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Was macht der KI-Chatbot?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
-        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Der Chatbot hilft dir bei allem rund um deinen Hund. Du kannst ihn zum Beispiel fragen: „Finde einen Hundetrainer in meiner Nähe" oder „Analysiere dieses Foto und sag mir, welche Rasse mein Hund ist".</p>
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Was ist die interaktive Karte?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Sie baut dir Rundwege, die an einem Parkplatz beginnen und dort wieder enden, aus den offiziellen Wanderwegen von swisstopo und aus OpenStreetMap. Zu jedem Weg siehst du, was gemessen wurde: Kilometer, Wald in Prozent, ob er eine Strasse kreuzt, ob er am Wasser entlangläuft und wie weit der Parkplatz entfernt ist. Die interaktive Karte ist Teil des Abos.</p>
       </details>
       <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
         <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Ist HundeZonen kostenlos?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
