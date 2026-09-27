@@ -72,23 +72,25 @@
     .dibuja .vuelta,.dibuja .latido{ animation:none; }
   }
 </style>
-<!-- Meta Pixel -->
+<!-- Meta Pixel. NO se carga solo: hasta que el usuario acepta, aqui no se
+     descarga nada de Facebook y no se manda ni una peticion. El <noscript>
+     de siempre tampoco va: es una imagen que rastrea, y sin consentimiento
+     no puede estar en la pagina. -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1484955240142376');
-fbq('track', 'PageView');
+window.cargarPixel = function () {
+  if (window.fbq) return;
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1484955240142376');
+  fbq('track', 'PageView');
+};
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1484955240142376&ev=PageView&noscript=1"
-/></noscript>
-<!-- Fin Meta Pixel -->
 </head>
 <body class="bg-[#F7F4EF] text-[#3D4A38]">
 
@@ -96,9 +98,9 @@ src="https://www.facebook.com/tr?id=1484955240142376&ev=PageView&noscript=1"
 <header class="absolute inset-x-0 top-0 md:sticky md:backdrop-blur-xl md:bg-white/65 md:border-b md:border-[rgba(30,44,26,0.12)] md:shadow-[0_1px_4px_0_rgba(30,44,26,0.06)] z-50">
   <div class="ml-auto mr-auto max-w-6xl pt-0 pr-4 pb-0 pl-4">
     <nav aria-label="Hauptnavigation" class="items-center flex relative min-h-[72px] gap-2">
-      <a href="#top" class="items-center flex font-semibold mr-6 text-[#257564] text-[26px] min-h-11 gap-2 fredoka">
+      <a href="#top" class="items-center flex font-semibold mr-6 text-[#257564] text-[22px] sm:text-[25px] min-h-11 gap-2 shrink-0">
         <img src="hundezonen-assets/icon.png" alt="HundeZonen Logo" class="w-9 h-9 rounded-xl">
-        <span>HundeZonen <span class="align-middle" aria-hidden="true">🇨🇭</span></span>
+        <span class="whitespace-nowrap">HundeZonen&nbsp;<span aria-hidden="true">🇨🇭</span></span>
       </a>
       <div class="items-center hidden md:flex grow justify-center gap-9">
         <a href="#routen" class="navlink">Routen</a>
@@ -1023,6 +1025,61 @@ document.querySelectorAll('a[href*="apps.apple.com"], a[href*="play.google.com"]
       });
     });
   });
+</script>
+<!-- ===== Cookies ===== -->
+<div id="cookies" hidden
+     role="dialog" aria-modal="false" aria-labelledby="cookies-titulo"
+     class="fixed inset-x-0 bottom-0 z-[60] px-3 pb-3 sm:px-4 sm:pb-4">
+  <div class="mx-auto max-w-2xl bg-white border border-[#E8E4DC] rounded-3xl p-5 sm:p-6"
+       style="box-shadow: rgba(30,44,26,0.28) 0px 18px 50px -14px;">
+    <div class="flex items-start gap-3">
+      <span class="shrink-0 w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center text-[18px]">🍪</span>
+      <div>
+        <h2 id="cookies-titulo" class="font-bold text-[#1E2C1A] text-[17px] m-0">Dürfen wir messen, wie du hergefunden hast?</h2>
+        <p class="text-[#5F6B57] text-[14.5px] leading-[1.6] mt-2 mb-0">
+          Die Seite funktioniert ohne alles. Nur wenn du zustimmst, laden wir das Meta-Pixel –
+          damit sehen wir, welche Anzeige dich hergebracht hat. Keine Weitergabe darüber hinaus.
+          <a href="datenschutz.html" class="font-semibold text-[#047857] hover:underline">Mehr dazu</a>
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-2.5 mt-5">
+      <button type="button" id="cookies-no"
+        class="order-2 sm:order-1 flex-1 font-bold uppercase bg-white border-2 border-[#D5CFC4] text-[#5F6B57] text-[14px] tracking-[0.5px] py-3 rounded-2xl">
+        Nur das Nötige
+      </button>
+      <button type="button" id="cookies-si"
+        class="order-1 sm:order-2 flex-1 font-bold uppercase bg-[#047857] text-white text-[14px] tracking-[0.5px] py-3 rounded-2xl">
+        Einverstanden
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// La decision se guarda en el navegador del visitante y no sale de ahi.
+// Sin decision, el aviso sale; con "no", no se vuelve a preguntar y el
+// pixel no se carga nunca. Si el navegador tiene el almacenamiento
+// bloqueado, se falla del lado seguro: se pregunta y no se rastrea.
+(function () {
+  var CLAVE = 'hz-cookies';
+  var caja = document.getElementById('cookies');
+  var elegido = null;
+  try { elegido = localStorage.getItem(CLAVE); } catch (e) {}
+
+  if (elegido === 'si') { window.cargarPixel(); return; }
+  if (elegido === 'no') return;
+
+  caja.hidden = false;
+
+  function decidir(valor) {
+    try { localStorage.setItem(CLAVE, valor); } catch (e) {}
+    caja.hidden = true;
+    if (valor === 'si') window.cargarPixel();
+  }
+  document.getElementById('cookies-si').addEventListener('click', function () { decidir('si'); });
+  document.getElementById('cookies-no').addEventListener('click', function () { decidir('no'); });
+})();
 </script>
 </body>
 </html>
