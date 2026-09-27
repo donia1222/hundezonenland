@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HundeZonen – Entdecke die schönsten Hunderouten der Schweiz</title>
-<meta name="description" content="HundeZonen: Finde, teile und bewerte hundefreundliche Spazierrouten in der Schweiz, Deutschland und Österreich. Mit Giftköder-Radar, Hunde-Services in der Nähe und einer Community von Hundefreunden.">
+<meta name="description" content="HundeZonen: Rundwege für dich und deinen Hund – in der ganzen Schweiz. Mit interaktiver Karte, Giftköder-Radar, Tierärzten und Hundeschulen in der Nähe und einer Community von Hundefreunden.">
 <meta name="theme-color" content="#1AA39A">
 <meta name="author" content="HundeZonen">
-<meta name="keywords" content="HundeZonen, Hunderouten, Gassi, Spazierrouten, Giftköder-Radar, Hunde-Services, Hund, Schweiz, Deutschland, Österreich">
+<meta name="keywords" content="HundeZonen, Hunderouten, Gassi, Spazierrouten, Rundwege, interaktive Karte, Giftköder-Radar, Hunde-Services, Hund, Schweiz, Liechtenstein">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="hundezonen-assets/favicon-32.png">
@@ -31,11 +31,21 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{ --cream:#F7F4EF; --cream2:#FBFAF6; --ink:#1E2C1A; --ink2:#3D4A38; --muted:#5F6B57; --teal:#257564; --teal-d:#0e5648; --emerald:#047857; --emerald-d:#1A4A3A; --amber:#F59E0B; --line:#E8E4DC; }
-  body{ margin:0; font-family:Inter,"Inter Fallback",Roboto,Helvetica,sans-serif; color:var(--ink2); background:var(--cream); }
-  h1,h2,h3,.fredoka{ font-family:Fredoka,"Fredoka Fallback",sans-serif; }
+  /* La misma letra que la app. La 2.0 no carga ninguna fuente propia: usa la
+     del sistema, que en un iPhone es SF Pro. Con esta pila, la landing y la
+     app se ven identicas en el movil, que es donde va a llegar casi todo el
+     mundo desde Facebook. Inter queda de repuesto para Windows y Android. */
+  body{
+    margin:0; color:var(--ink2); background:var(--cream);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,Roboto,Helvetica,sans-serif;
+  }
+  h1,h2,h3,.fredoka{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Inter,Roboto,Helvetica,sans-serif;
+    font-weight:800;
+  }
   .btn-primary{ box-shadow: rgb(26,74,58) 0px 5px 0px 0px; }
   .btn-primary:active{ transform: translateY(4px); box-shadow: rgb(26,74,58) 0px 1px 0px 0px; }
   .btn-ghost{ box-shadow: rgb(213,207,196) 0px 5px 0px 0px; }
@@ -48,7 +58,37 @@
   .navlink:hover::after{ right:0; }
   .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
   .no-scrollbar::-webkit-scrollbar{ display:none; }
+
+  /* El circuito se dibuja solo, igual que dentro de la app. El dasharray es
+     mas largo que el trazo real: si se queda corto, la linea arranca ya
+     empezada y se nota. */
+  .vuelta{ stroke-dasharray:720; stroke-dashoffset:720; }
+  .dibuja .vuelta{ animation:trazar 2.2s cubic-bezier(.45,.05,.25,1) .25s forwards; }
+  .dibuja .latido{ animation:latir 1.8s ease-out 2.4s infinite; transform-origin:60px 132px; }
+  @keyframes trazar{ to{ stroke-dashoffset:0; } }
+  @keyframes latir{ 0%{ r:9; opacity:.45; } 70%,100%{ r:24; opacity:0; } }
+  @media (prefers-reduced-motion:reduce){
+    .vuelta{ stroke-dashoffset:0; }
+    .dibuja .vuelta,.dibuja .latido{ animation:none; }
+  }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1484955240142376');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1484955240142376&ev=PageView&noscript=1"
+/></noscript>
+<!-- Fin Meta Pixel -->
 </head>
 <body class="bg-[#F7F4EF] text-[#3D4A38]">
 
@@ -58,11 +98,11 @@
     <nav aria-label="Hauptnavigation" class="items-center flex relative min-h-[72px] gap-2">
       <a href="#top" class="items-center flex font-semibold mr-6 text-[#257564] text-[26px] min-h-11 gap-2 fredoka">
         <img src="hundezonen-assets/icon.png" alt="HundeZonen Logo" class="w-9 h-9 rounded-xl">
-        HundeZonen
+        <span>HundeZonen <span class="align-middle" aria-hidden="true">🇨🇭</span></span>
       </a>
       <div class="items-center hidden md:flex grow justify-center gap-9">
         <a href="#routen" class="navlink">Routen</a>
-        <a href="#karte" class="navlink">Karte</a>
+        <a href="#interaktiv" class="navlink">Karte</a>
         <a href="#radar" class="navlink">Giftköder-Radar</a>
         <a href="#services" class="navlink">Services</a>
         <a href="#community" class="navlink">Community</a>
@@ -78,7 +118,7 @@
     <div id="mobile-menu" class="md:hidden hidden mt-2 px-4 rounded-2xl bg-white shadow-[0_10px_30px_-10px_rgba(30,44,26,0.25)] border border-[rgba(30,44,26,0.1)] pb-3">
       <div class="flex flex-col pt-2">
         <a href="#routen" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Routen</a>
-        <a href="#karte" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Karte</a>
+        <a href="#interaktiv" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Karte</a>
         <a href="#radar" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Giftköder-Radar</a>
         <a href="#services" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Services</a>
         <a href="#community" class="mobile-navlink py-3 px-1 text-[#3D4A38] font-medium border-b border-[rgba(30,44,26,0.07)]">Community</a>
@@ -122,7 +162,7 @@
     <div class="items-center grid gap-14 md:grid-cols-2">
       <div>
         <h1 class="font-bold text-[#1E2C1A] text-[52px] md:text-[60px] tracking-[-1.2px] leading-[1.04]">Entdecke die schönsten <span class="text-[#257564]">Hunderouten</span> der Schweiz.</h1>
-        <p class="mt-5 text-[#3D4A38] text-[18px] leading-[1.6] max-w-[520px]"><strong class="font-bold text-[#1E2C1A]">HundeZonen</strong> zeigt dir hundefreundliche Spazierrouten in deiner Nähe – mit echten Bewertungen, Giftköder-Warnungen und allen Hunde-Services auf einer Karte.</p>
+        <p class="mt-5 text-[#3D4A38] text-[18px] leading-[1.6] max-w-[520px]"><strong class="font-bold text-[#1E2C1A]">HundeZonen</strong> berechnet dir Rundwege für deinen Standort – in der ganzen Schweiz. Dazu Giftköder-Warnungen, Tierärzte, Hundeschulen und Auslaufzonen auf einer Karte.</p>
         <div class="flex flex-wrap items-center mt-8 gap-3">
           <a href="https://apps.apple.com/us/app/hundezonen/id6745336299" target="_blank" rel="noopener" aria-label="Im App Store laden">
             <img src="hundezonen-assets/app-store.svg" alt="Download im App Store" class="h-[48px] w-auto block">
@@ -133,15 +173,77 @@
         </div>
         <div class="items-center flex flex-wrap mt-7 gap-6">
           <span class="items-center flex text-[#5F6B57] text-[14px] gap-2">
-            <span class="text-[#F59E0B] text-[16px]">★★★★★</span> 4,8 · von Hundebesitzern geliebt
+            <span class="text-[#F59E0B] text-[16px]">★★★★★</span> 5,0 im App&nbsp;Store
           </span>
-          <span class="items-center flex text-[#5F6B57] text-[14px] gap-2">🐾 Tausende Routen schweizweit</span>
+          <span class="items-center flex text-[#5F6B57] text-[14px] gap-2">🇨🇭 Rundwege für die ganze Schweiz</span>
         </div>
       </div>
-      <div class="relative max-w-[400px] mx-auto md:ml-auto md:mr-0">
-        <div class="rounded-[2rem] overflow-hidden card border border-[#E8E4DC] rotate-1 aspect-[4/5]" style="box-shadow: rgba(30,44,26,0.18) 0px 20px 50px -20px;">
-          <img src="hundezonen-assets/hero.jpg" alt="Frau joggt mit ihrem Hund durch den herbstlichen Park" class="block w-full h-full object-cover">
-        </div>
+      <!-- La captura maquetada del Home, no una foto de banco de imagenes.
+           En los dos primeros segundos hay que ver el producto: quien llega
+           de un anuncio no sabe todavia que es esto. -->
+      <div class="relative max-w-[305px] mx-auto md:ml-auto md:mr-0">
+        <img src="hundezonen-assets/hero-heute.jpg"
+             alt="Der Startbildschirm von HundeZonen mit Rundwegen in der Nähe"
+             class="block w-full h-auto rounded-[2rem]"
+             style="filter: drop-shadow(rgba(30,44,26,0.22) 0px 24px 46px);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Interaktive Karte (lo nuevo de la 2.0) ===== -->
+<section id="interaktiv" class="bg-[#12403A] pt-16 pb-16 overflow-hidden">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+
+      <!-- El mismo dibujo que sale dentro de la app la primera vez: la vuelta
+           se traza sola. Es una vuelta CERRADA a proposito, que es justo lo
+           que hay que explicar. -->
+      <div class="rounded-[2rem] overflow-hidden bg-[#0C302C] border border-[rgba(255,255,255,0.09)] aspect-[3/2] w-full">
+        <svg viewBox="0 0 280 180" class="w-full h-full block" role="img" aria-label="Ein Rundweg zeichnet sich auf der Karte">
+          <g opacity="0.5">
+            <path d="M -10 150 C 60 128, 120 156, 290 122 L 290 190 L -10 190 Z" fill="rgba(110,212,188,0.10)"/>
+            <path d="M -10 44 C 70 30, 130 58, 290 26" stroke="rgba(255,255,255,0.10)" stroke-width="9" fill="none"/>
+            <path d="M 96 -10 C 104 60, 78 120, 96 200" stroke="rgba(255,255,255,0.08)" stroke-width="7" fill="none"/>
+          </g>
+          <path class="vuelta"
+            d="M 60 132 C 42 104, 52 70, 84 58 C 112 47, 138 62, 152 44 C 168 24, 208 28, 218 52 C 229 78, 208 96, 190 108 C 168 122, 158 148, 128 152 C 96 156, 76 156, 60 132 Z"
+            stroke="#6ED4BC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle class="latido" cx="60" cy="132" r="9" fill="#6ED4BC"/>
+          <circle cx="60" cy="132" r="8" fill="#6ED4BC" stroke="#12403A" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <div>
+        <span class="inline-flex items-center gap-2 bg-[rgba(110,212,188,0.16)] text-[#8FE3CD] text-[13px] font-semibold py-1.5 px-3 rounded-full">NEU in Version 2.0</span>
+        <h2 class="font-bold text-white text-[36px] md:text-[42px] tracking-[-0.9px] leading-[1.08] mt-4">Rundwege, die auf keiner Karte stehen</h2>
+        <p class="mt-4 text-[#BDD8D1] text-[17px] leading-[1.7]">
+          Wir berechnen für deinen Standort Rundwege, die es so noch nirgends gibt –
+          aus den offiziellen Wanderwegen von swisstopo und OpenStreetMap. Neu für die ganze Schweiz.
+        </p>
+
+        <ul class="mt-7 grid sm:grid-cols-2 gap-x-6 gap-y-5">
+          <li class="flex gap-3">
+            <span class="shrink-0 w-9 h-9 rounded-full bg-[rgba(110,212,188,0.16)] flex items-center justify-center text-[17px]">🧭</span>
+            <span><strong class="block text-white text-[15px]">Immer eine Runde</strong>
+            <span class="text-[#9FBFB8] text-[14px] leading-[1.55] block mt-0.5">Start und Ziel am selben Ort, ohne denselben Weg zweimal.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-9 h-9 rounded-full bg-[rgba(110,212,188,0.16)] flex items-center justify-center text-[17px]">🌲</span>
+            <span><strong class="block text-white text-[15px]">Durch Wald und am Wasser</strong>
+            <span class="text-[#9FBFB8] text-[14px] leading-[1.55] block mt-0.5">Schattige Wege an Bächen und Seen – und weg von Strassen.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-9 h-9 rounded-full bg-[rgba(110,212,188,0.16)] flex items-center justify-center text-[17px]">🅿️</span>
+            <span><strong class="block text-white text-[15px]">Parkplatz am Start</strong>
+            <span class="text-[#9FBFB8] text-[14px] leading-[1.55] block mt-0.5">Jede Runde beginnt dort, wo du das Auto abstellen kannst.</span></span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-9 h-9 rounded-full bg-[rgba(110,212,188,0.16)] flex items-center justify-center text-[17px]">➤</span>
+            <span><strong class="block text-white text-[15px]">Antippen und loslaufen</strong>
+            <span class="text-[#9FBFB8] text-[14px] leading-[1.55] block mt-0.5">Runde auswählen und dich direkt zum Start navigieren lassen.</span></span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -152,27 +254,129 @@
   <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
     <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Kennst du das?</h2>
     <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Gassi gehen sollte entspannt sein – ist es aber oft nicht.</p>
+
+    <!-- Dibujos propios, no ilustraciones de archivo. Cada uno cuenta EL
+         problema del que habla su texto: el bucle que se repite, el peligro
+         escondido en la hierba, y la informacion desperdigada. Trazo fino y
+         la misma paleta que la app, para que no parezcan pegados de fuera. -->
     <div class="grid md:grid-cols-3 gap-6 mt-12">
+
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <img src="hundezonen-assets/problem-routine.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
+        <div class="bg-[#EAF4F0]">
+          <svg viewBox="0 0 320 240" class="block w-full h-auto" role="img" aria-label="Immer dieselbe Runde">
+            <circle cx="160" cy="120" r="86" fill="rgba(37,117,100,0.05)"/>
+            <!-- La misma vuelta, una y otra vez: el trazo se cierra sobre si mismo. -->
+            <ellipse cx="160" cy="124" rx="74" ry="52" fill="none" stroke="#257564" stroke-width="3.5" stroke-dasharray="1 11" stroke-linecap="round" opacity="0.5"/>
+            <ellipse cx="160" cy="124" rx="52" ry="34" fill="none" stroke="#257564" stroke-width="4" stroke-linecap="round"/>
+            <path d="M 205 110 l 9 -9 -9 -9" fill="none" stroke="#257564" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(-3,14)"/>
+            <!-- La huella, siempre en el mismo sitio. -->
+            <g fill="#257564" opacity="0.85" transform="translate(148,110)">
+              <ellipse cx="12" cy="16" rx="11" ry="9"/>
+              <ellipse cx="2"  cy="3"  rx="4"  ry="5.5"/>
+              <ellipse cx="11" cy="0"  rx="4"  ry="6"/>
+              <ellipse cx="20" cy="2"  rx="4"  ry="5.5"/>
+              <ellipse cx="26" cy="9"  rx="3.5" ry="4.5"/>
+            </g>
+            <path d="M 60 196 h 200" stroke="#257564" stroke-width="3" stroke-linecap="round" opacity="0.18"/>
+          </svg>
+        </div>
         <div class="p-7 pt-5">
           <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Immer dieselbe Runde</h3>
           <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Du läufst seit Monaten denselben Weg und weisst nicht, wo es schöne, hundefreundliche Alternativen gibt.</p>
         </div>
       </div>
+
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <img src="hundezonen-assets/problem-radar.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
+        <div class="bg-[#FBEDEB]">
+          <svg viewBox="0 0 320 240" class="block w-full h-auto" role="img" aria-label="Angst vor Giftködern">
+            <circle cx="160" cy="118" r="84" fill="rgba(163,44,34,0.05)"/>
+            <!-- Hierba, y algo escondido debajo que no se ve hasta que es tarde. -->
+            <path d="M 44 190 q 10 -40 20 -2 M 70 192 q 12 -50 22 -3 M 228 192 q 12 -48 22 -2 M 256 190 q 10 -38 20 -1"
+                  fill="none" stroke="#A32C22" stroke-width="3" stroke-linecap="round" opacity="0.28"/>
+            <path d="M 34 192 h 252" stroke="#A32C22" stroke-width="3.5" stroke-linecap="round" opacity="0.35"/>
+            <!-- El aviso: triangulo con la pata dentro. -->
+            <path d="M 160 58 L 224 168 H 96 Z" fill="none" stroke="#A32C22" stroke-width="5" stroke-linejoin="round"/>
+            <g fill="#A32C22" transform="translate(146,104) scale(0.86)">
+              <ellipse cx="14" cy="34" rx="13" ry="10"/>
+              <ellipse cx="2"  cy="18" rx="4.5" ry="6"/>
+              <ellipse cx="13" cy="14" rx="4.5" ry="6.5"/>
+              <ellipse cx="24" cy="17" rx="4.5" ry="6"/>
+              <ellipse cx="31" cy="26" rx="4" ry="5"/>
+            </g>
+            <!-- Las ondas del aviso, que llegan tarde. -->
+            <path d="M 244 96 a 34 34 0 0 1 0 44 M 262 82 a 56 56 0 0 1 0 72"
+                  fill="none" stroke="#A32C22" stroke-width="3.5" stroke-linecap="round" opacity="0.4"/>
+          </svg>
+        </div>
         <div class="p-7 pt-5">
           <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Angst vor Giftködern</h3>
           <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Ausgelegte Giftköder sind eine reale Gefahr – aber du erfährst meist erst davon, wenn es zu spät ist.</p>
         </div>
       </div>
+
       <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <img src="hundezonen-assets/problem-services.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
+        <div class="bg-[#F3EFE6]">
+          <svg viewBox="0 0 320 240" class="block w-full h-auto" role="img" aria-label="Wo ist der nächste Service?">
+            <circle cx="160" cy="118" r="84" fill="rgba(180,105,14,0.05)"/>
+            <!-- Doce sitios distintos, desperdigados, y ninguno te dice donde estan los otros. -->
+            <g fill="none" stroke="#B4690E" stroke-width="3.5" stroke-linecap="round" opacity="0.32">
+              <path d="M 54 76 h 44 M 54 92 h 28"/>
+              <path d="M 222 62 h 44 M 222 78 h 26"/>
+              <path d="M 40 160 h 40 M 40 176 h 24"/>
+              <path d="M 238 162 h 40 M 238 178 h 22"/>
+            </g>
+            <g fill="none" stroke="#B4690E" stroke-width="2.6" opacity="0.28">
+              <rect x="44" y="56" width="66" height="52" rx="9"/>
+              <rect x="212" y="42" width="66" height="52" rx="9"/>
+              <rect x="30" y="140" width="62" height="52" rx="9"/>
+              <rect x="228" y="142" width="62" height="52" rx="9"/>
+            </g>
+            <!-- La lupa que busca en medio de todo. -->
+            <circle cx="158" cy="112" r="40" fill="#fff" stroke="#B4690E" stroke-width="5"/>
+            <path d="M 187 141 l 26 26" stroke="#B4690E" stroke-width="7" stroke-linecap="round"/>
+            <path d="M 158 92 a 13 13 0 1 1 0 26 a 13 13 0 1 1 0 -26 Z M 158 118 v 16" fill="none" stroke="#B4690E" stroke-width="4" stroke-linecap="round" opacity="0"/>
+            <text x="158" y="124" text-anchor="middle" font-size="42" font-weight="700" fill="#B4690E"
+                  font-family="-apple-system,BlinkMacSystemFont,Inter,sans-serif">?</text>
+          </svg>
+        </div>
         <div class="p-7 pt-5">
           <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Wo ist der nächste Service?</h3>
           <p class="text-[#5F6B57] text-[15px] leading-[1.6]">Tierarzt, Hundeschule, Auslaufzone oder Shop in der Nähe? Die Infos sind über zwölf Webseiten verstreut.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Screenshots ===== -->
+<section class="bg-[#F7F4EF] pt-20 pb-20 overflow-hidden">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">So sieht HundeZonen aus</h2>
+    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Ein Blick in die App – vom täglichen Vorschlag bis zur Community.</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-7 mt-12">
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-heute.jpg" alt="Tagesvorschlag in deiner Nähe" loading="lazy" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Jeden Tag ein neuer Weg</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-karte.jpg" alt="Wege, Videos und Services auf einer Karte" loading="lazy" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Alles auf einer Karte</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-wege.jpg" alt="Gefundene Rundwege in der interaktiven Karte" loading="lazy" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Wege, die noch keiner kennt</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
+          <img src="hundezonen-assets/screen-community.jpg" alt="Community-Feed mit Fotos und Videos" loading="lazy" class="block w-full h-auto">
+        </div>
+        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Community</div>
       </div>
     </div>
   </div>
@@ -486,37 +690,10 @@
 </script>
 
 <!-- ===== Interaktive Karte ===== -->
-<section id="karte" class="bg-[#F7F4EF] pt-20 pb-20">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
-    <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">✨ Neu in Version 2.0</span></span>
-    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Wege, die noch keiner kennt</h2>
-    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[680px] mx-auto leading-[1.6]">Die interaktive Karte baut dir Rundwege, die an einem Parkplatz beginnen und dort wieder enden – aus den offiziellen Wanderwegen von swisstopo und aus OpenStreetMap. Auch dort, wo noch niemand eine Route eingetragen hat.</p>
-    <div class="grid md:grid-cols-2 gap-6 mt-12 max-w-[860px] mx-auto">
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <div class="flex items-center justify-center bg-[#EAF4F0] pt-8 px-8"><img src="hundezonen-assets/screen-wege.jpg" alt="Gefundene Rundwege in der interaktiven Karte" loading="lazy" class="block w-auto max-h-[440px] rounded-[1.4rem]" style="box-shadow: rgba(30,44,26,0.18) 0px 14px 36px -16px;"></div>
-        <div class="p-7 pt-5">
-          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Alles gemessen, nichts geschätzt</h3>
-          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Zu jedem Weg steht, wie viele Kilometer er hat, wie viel davon durch den Wald führt, ob er eine Strasse kreuzt, ob er am Wasser entlangläuft und wie weit der Parkplatz entfernt ist.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <div class="flex items-center justify-center bg-[#EAF4F0] pt-8 px-8"><img src="hundezonen-assets/screen-route.jpg" alt="Alle Infos zu einer Route" loading="lazy" class="block w-auto max-h-[440px] rounded-[1.4rem]" style="box-shadow: rgba(30,44,26,0.18) 0px 14px 36px -16px;"></div>
-        <div class="p-7 pt-5">
-          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">Du weisst, was dich erwartet</h3>
-          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Schatten, Wasser, Parkplatz und ein Video vom Weg – alles schon vor der Abfahrt. Und der Knopf bringt dich direkt zum Start.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== Radar highlight ===== -->
-<section id="radar" class="bg-[#FBFAF6] pt-20 pb-20">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="rounded-[2rem] overflow-hidden card border border-[#E8E4DC] -rotate-1 w-full max-w-[360px] aspect-square mx-auto" style="box-shadow: rgba(30,44,26,0.18) 0px 16px 40px -18px;">
-        <video src="hundezonen-assets/radar.mp4" class="block w-full h-full object-cover" autoplay muted loop playsinline></video>
-      </div>
+<section id="radar" class="bg-[#FBFAF6] pt-16 pb-16">
+  <div class="ml-auto mr-auto max-w-3xl pr-4 pl-4">
+    <div>
       <div>
         <span class="inline-flex items-center gap-2 bg-[#FDECEC] text-[#B91C1C] text-[13px] font-semibold py-1.5 px-3 rounded-full">🛡️ Sicherheit zuerst</span>
         <h2 class="font-bold text-[#1E2C1A] text-[40px] tracking-[-0.8px] leading-[1.1] mt-4">Der Giftköder-Radar, der mitdenkt</h2>
@@ -532,116 +709,107 @@
   </div>
 </section>
 
-<!-- ===== Screenshots ===== -->
-<section class="bg-[#F7F4EF] pt-20 pb-20 overflow-hidden">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
-    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">So sieht HundeZonen aus</h2>
-    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Ein Blick in die App – vom täglichen Vorschlag bis zur Community.</p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-7 mt-12">
-      <div class="flex flex-col items-center">
-        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-heute.jpg" alt="Tagesvorschlag in deiner Nähe" loading="lazy" class="block w-full h-auto">
-        </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Jeden Tag ein neuer Weg</div>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-karte.jpg" alt="Wege, Videos und Services auf einer Karte" loading="lazy" class="block w-full h-auto">
-        </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Alles auf einer Karte</div>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-wege.jpg" alt="Gefundene Rundwege in der interaktiven Karte" loading="lazy" class="block w-full h-auto">
-        </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Wege, die noch keiner kennt</div>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="rounded-[1.8rem] border-[6px] border-[#1E2C1A] bg-[#1E2C1A] overflow-hidden w-full" style="box-shadow: rgba(30,44,26,0.22) 0px 16px 40px -16px;">
-          <img src="hundezonen-assets/screen-community.jpg" alt="Community-Feed mit Fotos und Videos" loading="lazy" class="block w-full h-auto">
-        </div>
-        <div class="mt-4 font-semibold text-[#1E2C1A] text-[15px] text-center fredoka">Community</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===== Testimonials ===== -->
 <section id="community" class="bg-[#F7F4EF] pt-20 pb-20">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+  <div class="ml-auto mr-auto max-w-4xl pr-4 pl-4">
     <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08]">Das sagen Hundebesitzer wie du</h2>
-    <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
-        <div class="text-[#F59E0B] text-[16px]">★★★★★</div>
-        <p class="text-[#3D4A38] text-[15px] leading-[1.7] mt-3">«Endlich entdecke ich neue Wege, statt jeden Tag dieselbe Runde zu drehen. Bruno liebt es!»</p>
-        <div class="flex items-center gap-3 mt-5">
-          <div class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center">🐕</div>
-          <div><div class="font-semibold text-[#1E2C1A] text-[14px]">Sandra K.</div><div class="text-[#5F6B57] text-[13px]">Zürich</div></div>
+    <p class="text-center text-[#5F6B57] text-[17px] mt-4">
+      <span class="text-[#F59E0B]">★★★★★</span>
+      <strong class="text-[#1E2C1A]">5,0</strong> · 3 Bewertungen im App&nbsp;Store
+    </p>
+
+    <!-- Reseñas reales del App Store. No se inventa ni una coma: quien las
+         busque las encuentra ahí con el mismo nombre y la misma fecha. -->
+    <div class="mt-12 grid gap-5">
+
+      <!-- La larga, arriba y a todo lo ancho: es la que de verdad convence. -->
+      <figure class="bg-white rounded-3xl card border border-[#E8E4DC] p-8 md:p-9 m-0">
+        <div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+          <h3 class="font-bold text-[#1E2C1A] text-[21px] tracking-[-0.3px] m-0">Perfekte App für Hundebesitzer</h3>
+          <span class="text-[#F59E0B] text-[15px]">★★★★★</span>
         </div>
-      </div>
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
-        <div class="text-[#F59E0B] text-[16px]">★★★★★</div>
-        <p class="text-[#3D4A38] text-[15px] leading-[1.7] mt-3">«Der Giftköder-Radar gibt mir ein gutes Gefühl. Ich sehe sofort, wo ich vorsichtig sein muss.»</p>
-        <div class="flex items-center gap-3 mt-5">
-          <div class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center">🐩</div>
-          <div><div class="font-semibold text-[#1E2C1A] text-[14px]">Marco B.</div><div class="text-[#5F6B57] text-[13px]">Bern</div></div>
-        </div>
-      </div>
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-7">
-        <div class="text-[#F59E0B] text-[16px]">★★★★★</div>
-        <p class="text-[#3D4A38] text-[15px] leading-[1.7] mt-3">«Schöne Community und super praktisch, dass Tierärzte und Hundeschulen gleich auf der Karte sind.»</p>
-        <div class="flex items-center gap-3 mt-5">
-          <div class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center">🦮</div>
-          <div><div class="font-semibold text-[#1E2C1A] text-[14px]">Lena F.</div><div class="text-[#5F6B57] text-[13px]">Luzern</div></div>
-        </div>
+        <blockquote class="text-[#3D4A38] text-[17px] leading-[1.75] mt-4 m-0">
+          «Eine wirklich tolle App! Die Routen sind übersichtlich, leicht zu finden und super für
+          Spaziergänge mit dem Hund. Besonders gefällt mir, dass man eigene Wege teilen kann und
+          trotzdem volle Kontrolle über die Privatsphäre behält. Weiter so! 🐾🌟»
+        </blockquote>
+        <figcaption class="flex items-center gap-3 mt-6 text-[14px]">
+          <span class="w-9 h-9 rounded-full bg-[#E6F2EE] flex items-center justify-center shrink-0">🐾</span>
+          <span class="font-semibold text-[#1E2C1A]">iil+uuii</span>
+          <span class="text-[#8A9487]">·</span>
+          <span class="text-[#5F6B57]">3. Dezember</span>
+        </figcaption>
+      </figure>
+
+      <!-- Y las dos cortas debajo, más pequeñas. -->
+      <div class="grid sm:grid-cols-2 gap-5">
+        <figure class="bg-white rounded-3xl card border border-[#E8E4DC] p-7 m-0">
+          <div class="text-[#F59E0B] text-[15px]">★★★★★</div>
+          <h3 class="font-bold text-[#1E2C1A] text-[17px] mt-3 m-0">Super App!</h3>
+          <blockquote class="text-[#3D4A38] text-[15px] leading-[1.7] mt-2 m-0">«Super!»</blockquote>
+          <figcaption class="flex items-center gap-2.5 mt-5 text-[13.5px]">
+            <span class="font-semibold text-[#1E2C1A]">Besnikhd</span>
+            <span class="text-[#8A9487]">·</span>
+            <span class="text-[#5F6B57]">25. November</span>
+          </figcaption>
+        </figure>
+
+        <!-- La tercera no lleva comentario. Se enseña igual: son tres de
+             cinco estrellas, y esconder la que no escribió nada seria
+             contar solo la mitad. -->
+        <figure class="bg-white rounded-3xl card border border-[#E8E4DC] p-7 m-0 flex flex-col justify-center items-center text-center">
+          <div class="text-[#F59E0B] text-[22px] leading-none">★★★★★</div>
+          <div class="font-bold text-[#1E2C1A] text-[17px] mt-3">5 von 5 Sternen</div>
+          <div class="text-[#5F6B57] text-[14px] mt-1">Bewertung ohne Kommentar</div>
+        </figure>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== Services strip ===== -->
-<section id="services" class="bg-[#FBFAF6] pt-16 pb-16">
-  <div class="ml-auto mr-auto max-w-5xl pr-4 pl-4 text-center">
-    <h2 class="font-bold text-[#1E2C1A] text-[34px] tracking-[-0.6px]">Verfügbar im DACH-Raum</h2>
-    <p class="text-[#5F6B57] text-[17px] mt-3 leading-[1.6] max-w-[620px] mx-auto">HundeZonen startet in der Schweiz, Deutschland und Österreich – mit weiteren Ländern in Planung.</p>
-    <div class="flex flex-wrap justify-center gap-3 mt-6 text-[15px] font-semibold text-[#1E2C1A]">
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-5 card">🇨🇭 Schweiz</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-5 card">🇩🇪 Deutschland</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-5 card">🇦🇹 Österreich</span>
-    </div>
-    <div class="flex flex-wrap justify-center gap-3 mt-5 text-[14px] font-semibold text-[#257564]">
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🗺️ Routen</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🛡️ Giftköder-Radar</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🏥 Services</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">👥 Community</span>
-      <span class="bg-white border border-[#E8E4DC] rounded-full py-2 px-4 card">🧭 Interaktive Karte</span>
+<section id="services" class="bg-[#FBFAF6] pt-14 pb-14">
+  <div class="ml-auto mr-auto max-w-3xl pr-4 pl-4">
+    <!-- Solo lo que es verdad. El backend devuelve unicamente negocios suizos
+         y de Liechtenstein, asi que la landing no puede seguir prometiendo
+         Alemania y Austria. -->
+    <div class="bg-white rounded-3xl card border border-[#E8E4DC] px-7 py-8 text-center">
+      <div class="text-[34px] leading-none">🇨🇭 🇱🇮</div>
+      <h2 class="font-bold text-[#1E2C1A] text-[28px] tracking-[-0.5px] mt-4">Für die Schweiz gemacht</h2>
+      <p class="text-[#5F6B57] text-[16.5px] mt-3 leading-[1.65] max-w-[520px] mx-auto">
+        Rundwege, Tierärzte, Hundeschulen, Shops und Robidog-Stationen in der ganzen
+        Schweiz und in Liechtenstein – aus Schweizer Quellen, auf einem Schweizer Server.
+      </p>
     </div>
   </div>
 </section>
 
 <!-- ===== Privacy ===== -->
-<section id="privacy" class="bg-[#F7F4EF] pt-20 pb-20">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
+<section id="privacy" class="bg-[#F7F4EF] pt-16 pb-16">
+  <div class="ml-auto mr-auto max-w-4xl pr-4 pl-4">
     <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">🔒 Deine Privatsphäre, deine Wahl</span></span>
-    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Sichtbar oder völlig unsichtbar</h2>
-    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[640px] mx-auto leading-[1.6]">HundeZonen verkauft deine Daten nicht. Du entscheidest selbst, wie du die App nutzt – mit zwei Datenschutzmodi.</p>
-    <div class="grid md:grid-cols-2 gap-6 mt-12 max-w-[740px] mx-auto">
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <img src="hundezonen-assets/privacy-public.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
-        <div class="p-7 pt-5">
-          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">👁️ Öffentlicher Modus</h3>
-          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Andere Nutzer können dich finden, dein Profil und deine veröffentlichten Routen sehen. Du interagierst ganz normal mit der Community.</p>
+    <h2 class="font-bold text-center text-[#1E2C1A] text-[36px] md:text-[40px] tracking-[-0.8px] leading-[1.1] mt-4">Sichtbar oder völlig unsichtbar</h2>
+    <p class="text-center text-[#5F6B57] text-[17px] mt-3 max-w-[600px] mx-auto leading-[1.6]">HundeZonen verkauft deine Daten nicht. Du entscheidest, wie du die App nutzt.</p>
+
+    <!-- Sin fotos: eran dos ilustraciones grandes que no explicaban nada que
+         el texto no diga, y se comian media pantalla de scroll. -->
+    <div class="grid sm:grid-cols-2 gap-5 mt-9">
+      <div class="bg-white rounded-2xl card border border-[#E8E4DC] p-6">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center text-[18px] shrink-0">👁️</span>
+          <h3 class="font-bold text-[#1E2C1A] text-[18px] m-0">Öffentlicher Modus</h3>
         </div>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.65] mt-3 m-0">Andere sehen dein Profil und deine veröffentlichten Routen. Du bist Teil der Community.</p>
       </div>
-      <div class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden">
-        <img src="hundezonen-assets/privacy-private.png" alt="" class="block w-full aspect-[4/3] object-cover bg-[#F7F4EF]">
-        <div class="p-7 pt-5">
-          <h3 class="font-bold mb-2 text-[#1E2C1A] text-[20px]">🥷 Privater Modus</h3>
-          <p class="text-[#5F6B57] text-[15px] leading-[1.7]">Du bist 100 % inkognito. Niemand sieht dich, dein Profil oder deine Routen – nur du selbst siehst deine gespeicherten Favoriten. Ideal, um die App ganz unsichtbar zu nutzen.</p>
+      <div class="bg-white rounded-2xl card border border-[#E8E4DC] p-6">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-full bg-[#E6F2EE] flex items-center justify-center text-[18px] shrink-0">🥷</span>
+          <h3 class="font-bold text-[#1E2C1A] text-[18px] m-0">Privater Modus</h3>
         </div>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.65] mt-3 m-0">Komplett inkognito. Niemand sieht dich, dein Profil oder deine Routen – nur du selbst.</p>
       </div>
     </div>
-    <p class="text-center mt-8"><a href="datenschutz.html" class="font-semibold text-[#047857] hover:underline text-[15px]">Vollständige Datenschutzerklärung →</a></p>
+    <p class="text-center mt-7"><a href="datenschutz.html" class="font-semibold text-[#047857] hover:underline text-[15px]">Vollständige Datenschutzerklärung →</a></p>
   </div>
 </section>
 
@@ -656,9 +824,10 @@
         <div class="font-bold text-[#1E2C1A] text-[22px] fredoka">Gratis</div>
         <div class="flex items-end gap-1 mt-2"><span class="font-bold text-[#1E2C1A] text-[40px] fredoka">0 CHF</span></div>
         <ul class="mt-6 space-y-3">
-          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Alle Routen entdecken</li>
-          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Giftköder-Warnungen</li>
-          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Hunde-Services finden</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Alle Routen entdecken und teilen</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Giftköder auf der Karte sehen</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Tierärzte, Hundeschulen und Shops</li>
+          <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Community und eigenes Profil</li>
           <li class="flex items-start gap-3 text-[#3D4A38] text-[15px]"><span class="text-[#047857] font-bold">✓</span> Werbefrei</li>
         </ul>
         <a href="#download" class="btn-ghost block text-center font-bold uppercase bg-white border-[#D5CFC4] border-2 text-[#257564] text-[15px] tracking-[0.5px] mt-8 py-3 rounded-2xl">Gratis starten</a>
@@ -670,12 +839,13 @@
         <div class="flex items-end gap-2 mt-2"><span class="font-bold text-white text-[40px] fredoka">5 CHF</span><span class="text-white/80 text-[15px] mb-2">/ 2 Monate</span></div>
         <div class="text-white/75 text-[14px]">≈ 2.50 CHF pro Monat</div>
         <ul class="mt-6 space-y-3">
-          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zu Routen-Videos</li>
-          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Unbegrenzte Routen</li>
-          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Laufende Updates</li>
-          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Zugang zur interaktiven Karte</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> <span><strong>Die interaktive Karte</strong> – Rundwege für deinen Standort</span></li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Alle Videos: sieh den Weg, bevor du hinfährst</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Routen ohne Limit</li>
+          <li class="flex items-start gap-3 text-white/95 text-[15px]"><span class="font-bold">✓</span> Giftköder-Mitteilungen für deine Region</li>
         </ul>
-        <a href="#download" class="btn-ghost block text-center font-bold uppercase bg-white text-[#047857] text-[15px] tracking-[0.5px] mt-8 py-3 rounded-2xl">Unterstützen</a>
+        <p class="text-white/80 text-[13.5px] mt-5 mb-0">Die erste Woche ist gratis. Kündigen jederzeit.</p>
+        <a href="#download" class="btn-ghost block text-center font-bold uppercase bg-white text-[#047857] text-[15px] tracking-[0.5px] mt-5 py-3 rounded-2xl">Unterstützen</a>
       </div>
     </div>
   </div>
@@ -696,28 +866,59 @@
       </details>
       <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
         <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">In welchen Ländern ist die App verfügbar?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
-        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">HundeZonen ist zunächst in der Schweiz, in Deutschland und in Österreich verfügbar. Später folgen weitere Länder – abhängig von der Resonanz der Nutzer.</p>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">HundeZonen ist für die Schweiz und Liechtenstein gemacht: die Wege, die Tierärzte, die Hundeschulen und die Robidog-Stationen stammen alle aus Schweizer Quellen.</p>
       </details>
       <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
         <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Was ist die interaktive Karte?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
         <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Sie baut dir Rundwege, die an einem Parkplatz beginnen und dort wieder enden, aus den offiziellen Wanderwegen von swisstopo und aus OpenStreetMap. Zu jedem Weg siehst du, was gemessen wurde: Kilometer, Wald in Prozent, ob er eine Strasse kreuzt, ob er am Wasser entlangläuft und wie weit der Parkplatz entfernt ist. Die interaktive Karte ist Teil des Abos.</p>
       </details>
       <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Woher kommen die Wege?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Aus zwei offiziellen Quellen: den Wanderwegen von <strong>swisstopo</strong>, dem Bundesamt für Landestopografie, und aus <strong>OpenStreetMap</strong>. Daraus rechnen wir die Runden selbst – deshalb findest du auch dort etwas, wo noch niemand eine Route eingetragen hat. Die Routen der Community kommen von anderen Hundebesitzern.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Funktioniert die App ohne Empfang?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Die Wege deiner Umgebung werden auf dem Handy gespeichert. Wenn du sie einmal geöffnet hast, kannst du sie später auch ohne Empfang wieder ansehen – praktisch genau dann, wenn du mit dem Hund draussen im Feld bist.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Was passiert mit meinem Standort?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Er bleibt auf deinem Handy. Wir fragen damit nur, welche Wege in deiner Nähe liegen; wir speichern keine Bewegungsprofile und verkaufen keine Daten. Du kannst den Standort jederzeit in den Einstellungen deines Handys ausschalten – dann zeigt die Karte einfach die ganze Schweiz.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Sehen andere, wo ich spazieren gehe?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Nur wenn du es willst. Du entscheidest bei jeder Route, ob sie öffentlich ist. Und im privaten Modus bist du für alle anderen komplett unsichtbar – dein Profil, deine Routen, alles.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
+        <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Wie kündige ich das Abo?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Jederzeit, direkt in den Einstellungen deines App-Store- oder Google-Play-Kontos. Es gibt keine Kündigungsfrist und keine Mindestlaufzeit. Die erste Woche ist gratis.</p>
+      </details>
+      <details class="bg-white rounded-2xl card border border-[#E8E4DC] p-5 group">
         <summary class="font-semibold text-[#1E2C1A] text-[17px] cursor-pointer list-none flex justify-between items-center">Ist HundeZonen kostenlos?<span class="text-[#257564] group-open:rotate-45 transition">+</span></summary>
-        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Ja, die Grundnutzung ist komplett kostenlos. Es gibt ein optionales Abo für 5 CHF alle zwei Monate (ca. 2 CHF im Monat), um die Weiterentwicklung zu unterstützen.</p>
+        <p class="text-[#5F6B57] text-[15px] leading-[1.7] mt-3">Ja, die Grundnutzung ist komplett kostenlos. Es gibt ein optionales Abo, das die interaktive Karte, alle Videos, unbegrenzte Routen und die Giftköder-Mitteilungen freischaltet – und damit Server, Datenbank und Weiterentwicklung trägt. Die erste Woche ist gratis.</p>
       </details>
     </div>
   </div>
 </section>
 
 <!-- ===== In memory of Don ===== -->
-<section class="bg-[#F7F4EF] pt-16 pb-16">
-  <div class="max-w-2xl mx-auto px-4 text-center">
-    <div class="inline-block rounded-full overflow-hidden border-4 border-white w-28 h-28 card">
-      <img src="hundezonen-assets/don.webp" alt="Don" class="w-full h-full object-cover">
+<!-- Don no es un adorno: la app se hizo caminando con el, y las primeras
+     rutas son las suyas. Antes ocupaba una seccion entera casi vacia y se
+     leia como un hueco; asi, en una tarjeta estrecha y horizontal, ocupa
+     poco y se lee como lo que es. -->
+<section class="bg-[#F7F4EF] pt-14 pb-14">
+  <div class="max-w-[600px] mx-auto px-4">
+    <div class="bg-white rounded-3xl card border border-[#E8E4DC] p-6 sm:p-7 flex items-center gap-5 text-left">
+      <div class="shrink-0 rounded-full overflow-hidden border-4 border-[#EAF4F0] w-[84px] h-[84px]">
+        <img src="hundezonen-assets/don.webp" alt="Don" loading="lazy" class="w-full h-full object-cover">
+      </div>
+      <div>
+        <h2 class="font-bold text-[#1E2C1A] text-[20px] m-0">Für Don 🐾</h2>
+        <p class="text-[#5F6B57] text-[15px] mt-2 mb-0 leading-[1.65]">
+          Diese App ist mit ihm entstanden – und die ersten Wege darin sind seine.
+          In Erinnerung an meinen treuen Begleiter.
+        </p>
+      </div>
     </div>
-    <h2 class="font-bold text-[#1E2C1A] text-[28px] mt-5 fredoka">Für Don 🐾</h2>
-    <p class="text-[#5F6B57] text-[17px] mt-3 leading-[1.7] italic">In Erinnerung an meinen Hund Don – meinen treuen Begleiter, der diese App inspiriert hat.</p>
   </div>
 </section>
 
@@ -737,7 +938,7 @@
             <img src="hundezonen-assets/google-play.png" alt="Jetzt bei Google Play" class="h-[52px] w-auto block">
           </a>
         </div>
-        <p class="text-white/70 text-[13px] mt-6">Gratis · 🇨🇭 Schweiz · 🇩🇪 Deutschland · 🇦🇹 Österreich</p>
+        <p class="text-white/70 text-[13px] mt-6">Gratis laden · 🇨🇭 Schweiz &amp; 🇱🇮 Liechtenstein</p>
       </div>
     </div>
   </div>
@@ -797,5 +998,31 @@
   </div>
 </footer>
 
+<script>
+// El trazo espera a que la seccion se vea. Animar algo que esta fuera de
+// pantalla es gastarlo: el usuario llega y ya esta dibujado.
+(function(){
+  var s = document.getElementById('interaktiv');
+  if (!s) return;
+  if (!('IntersectionObserver' in window)) { s.classList.add('dibuja'); return; }
+  new IntersectionObserver(function(e, o){
+    if (e[0].isIntersecting) { s.classList.add('dibuja'); o.disconnect(); }
+  }, { threshold: 0.35 }).observe(s);
+})();
+</script>
+<script>
+// Cada clic en una tienda cuenta como intencion de descarga. Se manda el
+// nombre de la tienda para poder separar iOS de Android en el informe.
+document.querySelectorAll('a[href*="apps.apple.com"], a[href*="play.google.com"]')
+  .forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (typeof fbq !== 'function') return;
+      fbq('track', 'Lead', {
+        content_name: 'App-Download',
+        content_category: a.href.indexOf('apps.apple.com') > -1 ? 'App Store' : 'Google Play'
+      });
+    });
+  });
+</script>
 </body>
 </html>
