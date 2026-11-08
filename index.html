@@ -385,8 +385,12 @@ window.cargarPixel = function () {
   <p class="text-center text-white/40 text-[12px] mt-10 px-4">Fotos in der App: Wikimedia Commons, mit Autor und Lizenz bei jedem Ort.</p>
 </section>
 <style>
-  .ausf-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 6px; max-width: 480px; }
-  @media (min-width: 768px) { .ausf-chips { justify-content: flex-start; } }
+  /* Móvil: una sola fila con desliz lateral (09/11/2026); escritorio: como antes */
+  .ausf-chips { display: flex; flex-wrap: nowrap; gap: 6px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x proximity; width: 100vw; margin: 0 -16px; padding: 4px 16px 6px; }
+  .ausf-chips::-webkit-scrollbar { display: none; }
+  .ausf-chip { flex: 0 0 auto; scroll-snap-align: center; }
+  @media (min-width: 768px) { .ausf-chips { flex-wrap: wrap; justify-content: flex-start; overflow: visible; width: auto; margin: 0; padding: 0; gap: 14px 6px; max-width: 480px; } }
   .ausf-chip { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 74px; background: none; border: 0; padding: 0; cursor: pointer; color: #fff; }
   .ausf-rund { width: 54px; height: 54px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
                background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); transition: background .25s, transform .25s, color .25s; }
@@ -414,6 +418,11 @@ window.cargarPixel = function () {
     chips.forEach(function (c, j) { c.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
     imgs.forEach(function (im, j) { im.classList.toggle('is-on', j === i); });
     if (lema) lema.textContent = lemas[i] || '';
+    var fila = chips[i].parentNode;
+    if (fila && fila.scrollWidth > fila.clientWidth + 2) {
+      var objetivo = chips[i].offsetLeft - (fila.clientWidth - chips[i].offsetWidth) / 2;
+      fila.scrollTo({ left: Math.max(0, objetivo), behavior: quieto ? 'auto' : 'smooth' });
+    }
   }
   function seguir() {
     clearInterval(timer);
