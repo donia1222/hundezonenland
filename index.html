@@ -362,6 +362,109 @@ window.cargarPixel = function () {
   </div>
 </section>
 
+<!-- ===== Ausflüge (09/11/2026): sustituye a la Community, apagada en la app el 30/10.
+     Los chips cambian solos cada pocos segundos y también al pulsarlos; cada uno
+     enseña su captura real de la app. ===== -->
+<section id="ausfluege" class="bg-[#12403A] pt-20 pb-20 overflow-hidden">
+  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4 grid md:grid-cols-2 gap-x-16 gap-y-10 items-center">
+    <div class="md:col-start-1 md:row-start-1 md:self-end">
+      <span class="inline-flex items-center gap-2 bg-white/10 text-[#C6EBA2] text-[13px] font-semibold py-1.5 px-3 rounded-full">🏔️ NEU · Ausflüge</span>
+      <h2 class="font-bold text-white text-[40px] md:text-[44px] tracking-[-1px] leading-[1.08] mt-4">363 schöne Orte in der Schweiz – mit deinem Hund</h2>
+      <p class="text-white/80 text-[17px] leading-[1.7] mt-4">Seen, Berge, Wasserfälle, Täler und Gletscher: die bekanntesten Ausflugsziele der Schweiz, mit Foto, Distanz von dir aus und dem nächsten Ort. Speichere deine Favoriten und sieh, wie hundefreundlich ein Ort ist.</p>
+      <a href="#download" class="btn-primary inline-flex items-center font-bold uppercase bg-[#C6EBA2] text-[#12403A] text-[16px] gap-2 tracking-[0.5px] mt-7 pt-4 pr-7 pb-4 pl-7 rounded-2xl">Ausflug finden →</a>
+    </div>
+    <div class="flex flex-col items-center md:col-start-2 md:row-start-1 md:row-span-2">
+      <div class="ausf-tel rounded-[2.4rem] border-[8px] border-[#0B1F1B] bg-[#0B1F1B] overflow-hidden w-[290px] sm:w-[320px]" style="box-shadow: rgba(0,0,0,0.45) 0px 30px 60px -20px;">
+        <div class="relative" style="aspect-ratio: 640 / 1320;">
+          <img src="hundezonen-assets/ausflug-naehe.jpg" alt="HundeZonen Ausflüge: In der Nähe" class="ausf-img is-on" data-img="0" width="640" height="1320">
+          <img src="hundezonen-assets/ausflug-seen.jpg" alt="HundeZonen Ausflüge: Seen" class="ausf-img" data-img="1" loading="lazy" width="640" height="1320">
+          <img src="hundezonen-assets/ausflug-berge.jpg" alt="HundeZonen Ausflüge: Berge" class="ausf-img" data-img="2" loading="lazy" width="640" height="1320">
+          <img src="hundezonen-assets/ausflug-wasserfaelle.jpg" alt="HundeZonen Ausflüge: Wasserfälle" class="ausf-img" data-img="3" loading="lazy" width="640" height="1320">
+          <img src="hundezonen-assets/ausflug-taeler.jpg" alt="HundeZonen Ausflüge: Täler" class="ausf-img" data-img="4" loading="lazy" width="640" height="1320">
+          <img src="hundezonen-assets/ausflug-gletscher.jpg" alt="HundeZonen Ausflüge: Gletscher" class="ausf-img" data-img="5" loading="lazy" width="640" height="1320">
+        </div>
+      </div>
+    </div>
+    <div class="md:col-start-1 md:row-start-2 md:self-start flex flex-col items-center md:items-start">
+      <div class="ausf-chips" role="group" aria-label="Kategorie wählen">
+          <button type="button" class="ausf-chip" data-chip="0" aria-pressed="true" aria-label="In der Nähe">
+            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="ausf-txt">In der Nähe</span>
+          </button>
+          <button type="button" class="ausf-chip" data-chip="1" aria-pressed="false" aria-label="Seen">
+            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span>
+            <span class="ausf-txt">Seen</span>
+          </button>
+          <button type="button" class="ausf-chip" data-chip="2" aria-pressed="false" aria-label="Berge">
+            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></span>
+            <span class="ausf-txt">Berge</span>
+          </button>
+          <button type="button" class="ausf-chip" data-chip="3" aria-pressed="false" aria-label="Wasserfälle">
+            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></span>
+            <span class="ausf-txt">Wasserfälle</span>
+          </button>
+          <button type="button" class="ausf-chip" data-chip="4" aria-pressed="false" aria-label="Täler">
+            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg></span>
+            <span class="ausf-txt">Täler</span>
+          </button>
+          <button type="button" class="ausf-chip" data-chip="5" aria-pressed="false" aria-label="Gletscher">
+            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 20-1.25-2.5L6 18"/><path d="M10 4 8.75 6.5 6 6"/><path d="m14 20 1.25-2.5L18 18"/><path d="m14 4 1.25 2.5L18 6"/><path d="m17 21-3-6h-4"/><path d="m17 3-3 6 1.5 3"/><path d="M2 12h6.5L10 9"/><path d="m20 10-1.5 2 1.5 2"/><path d="M22 12h-6.5L14 15"/><path d="m4 10 1.5 2L4 14"/><path d="m7 21 3-6-1.5-3"/><path d="m7 3 3 6h4"/></svg></span>
+            <span class="ausf-txt">Gletscher</span>
+          </button>
+      </div>
+      <p id="ausf-lema" class="text-[#C6EBA2] text-[15px] font-semibold mt-4 text-center md:text-left min-h-[1.5em]" aria-live="polite">Was liegt ganz in deiner Nähe?</p>
+    </div>
+  </div>
+  <p class="text-center text-white/40 text-[12px] mt-10 px-4">Fotos in der App: Wikimedia Commons, mit Autor und Lizenz bei jedem Ort.</p>
+</section>
+<style>
+  .ausf-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 6px; max-width: 480px; }
+  @media (min-width: 768px) { .ausf-chips { justify-content: flex-start; } }
+  .ausf-chip { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 74px; background: none; border: 0; padding: 0; cursor: pointer; color: #fff; }
+  .ausf-rund { width: 54px; height: 54px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
+               background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); transition: background .25s, transform .25s, color .25s; }
+  .ausf-txt { font-size: 12.5px; font-weight: 700; color: rgba(255,255,255,0.72); white-space: nowrap; transition: color .25s; }
+  .ausf-chip:hover .ausf-rund { background: rgba(255,255,255,0.18); }
+  .ausf-chip[aria-pressed="true"] .ausf-rund { background: #C6EBA2; color: #12403A; border-color: #C6EBA2; transform: scale(1.06); }
+  .ausf-chip[aria-pressed="true"] .ausf-txt { color: #C6EBA2; }
+  .ausf-chip:focus-visible .ausf-rund { outline: 2px solid #C6EBA2; outline-offset: 3px; }
+  .ausf-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;
+              opacity: 0; transform: scale(1.02); transition: opacity .55s ease, transform .55s ease; }
+  .ausf-img.is-on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .ausf-img, .ausf-rund { transition: none; } }
+</style>
+<script>
+(function () {
+  var chips = document.querySelectorAll('.ausf-chip');
+  var imgs = document.querySelectorAll('.ausf-img');
+  var lema = document.getElementById('ausf-lema');
+  var lemas = ["Was liegt ganz in deiner Nähe?","Bergseen und Uferwege","Gipfel mit Aussicht","Rauschen und Abkühlung","Weite Täler zum Durchstreifen","Ewiges Eis aus der Nähe"];
+  if (!chips.length || !imgs.length) return;
+  var actual = 0, timer = null, visible = false;
+  var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function poner(i) {
+    actual = i;
+    chips.forEach(function (c, j) { c.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    imgs.forEach(function (im, j) { im.classList.toggle('is-on', j === i); });
+    if (lema) lema.textContent = lemas[i] || '';
+  }
+  function seguir() {
+    clearInterval(timer);
+    if (quieto || !visible) return;
+    timer = setInterval(function () { poner((actual + 1) % chips.length); }, 3200);
+  }
+  // Al pulsar: cambia ya, y la cuenta vuelve a empezar desde ahí.
+  chips.forEach(function (c, j) { c.addEventListener('click', function () { poner(j); seguir(); }); });
+  // Solo gira cuando la sección se ve: fuera de pantalla no gasta nada.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; seguir(); }, { threshold: 0.25 })
+      .observe(document.getElementById('ausfluege'));
+  } else { visible = true; seguir(); }
+  // Precarga las demás capturas tras la primera, para que el cambio no parpadee.
+  window.addEventListener('load', function () { imgs.forEach(function (im) { im.loading = 'eager'; }); });
+})();
+</script>
+
 <!-- ===== Screenshots ===== -->
 <section class="bg-[#F7F4EF] pt-20 pb-20 overflow-hidden">
   <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
@@ -472,237 +575,6 @@ window.cargarPixel = function () {
   </div>
 </section>
 
-<!-- ===== Neueste Routen ===== -->
-<section id="neueste-routen" class="bg-[#FBFAF6] pt-20 pb-20">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4">
-    <span class="block text-center"><span class="inline-flex items-center gap-2 bg-[#E6F2EE] text-[#047857] text-[13px] font-semibold py-1.5 px-3 rounded-full">🗺️ Frisch eingetragen</span></span>
-    <h2 class="font-bold text-center text-[#1E2C1A] text-[44px] tracking-[-1px] leading-[1.08] mt-4">Die neuesten Routen</h2>
-    <p class="text-center text-[#5F6B57] text-[18px] mt-4 max-w-[620px] mx-auto leading-[1.6]">Diese Spazierrouten wurden zuletzt von Hundebesitzern hinzugefügt – täglich kommen neue dazu.</p>
-
-    <div id="routes-grid" class="flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 mt-12 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 sm:overflow-visible sm:mx-0 sm:px-0">
-      <!-- Skeletons (werden per JS ersetzt) -->
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
-        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
-        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
-      </div>
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
-        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
-        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
-      </div>
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
-        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
-        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
-      </div>
-      <div class="route-skeleton bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden animate-pulse snap-start shrink-0 w-[80%] sm:w-auto">
-        <div class="w-full aspect-[4/3] bg-[#EFEBE3]"></div>
-        <div class="p-5"><div class="h-4 w-2/3 bg-[#EFEBE3] rounded"></div><div class="h-3 w-1/2 bg-[#EFEBE3] rounded mt-3"></div><div class="h-3 w-full bg-[#EFEBE3] rounded mt-4"></div></div>
-      </div>
-    </div>
-
-    <div class="text-center mt-12">
-      <a href="#download" class="btn-primary inline-flex items-center font-bold uppercase bg-[#047857] text-white text-[16px] gap-2 tracking-[0.5px] pt-4 pr-7 pb-4 pl-7 rounded-2xl">Alle Routen in der App ansehen →</a>
-    </div>
-  </div>
-</section>
-
-<script>
-(function () {
-  var grid = document.getElementById('routes-grid');
-  if (!grid) return;
-
-  var FEATURES = {
-    agua:                { icon: '💧', label: 'Wasser' },
-    aparcamiento:        { icon: '🅿️', label: 'Parkplatz' },
-    arbolesConSombra:    { icon: '🌳', label: 'Schatten' },
-    restaurantesCercanos:{ icon: '🍽️', label: 'Restaurants' },
-    buenCaminoParaPerros:{ icon: '🐾', label: 'Hundefreundlich' },
-    muyFrecuentado:      { icon: '👥', label: 'Belebt' }
-  };
-
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
-    });
-  }
-
-  function locality(addr) {
-    if (!addr) return 'Route';
-    var parts = addr.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
-    if (parts.length >= 2) return parts[parts.length - 2]; // Ort
-    return parts[0];
-  }
-
-  function formatDate(s) {
-    if (!s) return '';
-    var d = new Date(s.replace(' ', 'T'));
-    if (isNaN(d)) return '';
-    return ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '.' + d.getFullYear();
-  }
-
-  // Nur Routen mit Bild oder Video anzeigen
-  function hasMedia(r) {
-    return (r.images && r.images.length > 0) || !!r.video;
-  }
-
-  function poster(r) {
-    if (r.images && r.images.length) return r.images[0];
-    if (r.video_thumbnail) return r.video_thumbnail;
-    return null;
-  }
-
-  function card(r) {
-    var img = poster(r);
-    var title = (r.titulo && r.titulo.trim()) ? r.titulo.trim() : locality(r.start_address);
-    var dist = (typeof r.distance === 'number') ? r.distance.toFixed(1).replace('.', ',') + ' km' : '';
-
-    var chips = '';
-    if (r.features) {
-      Object.keys(FEATURES).forEach(function (k) {
-        if (r.features[k]) {
-          chips += '<span class="inline-flex items-center gap-1 bg-[#F2EFE8] text-[#46523F] text-[12px] font-medium py-1 px-2.5 rounded-full">' +
-                   FEATURES[k].icon + ' ' + esc(FEATURES[k].label) + '</span>';
-        }
-      });
-    }
-
-    var media = '<img src="' + esc(img) + '" alt="Spazierroute in ' + esc(title) + '" loading="lazy" class="block w-full aspect-[4/3] object-cover bg-[#F2EFE8]">';
-    if (r.video) {
-      // Klickbarer Play-Button startet die 5-Sekunden-Vorschau
-      media += '<button type="button" data-video="' + esc(r.video) + '" aria-label="Vorschau abspielen" ' +
-                 'class="absolute inset-0 flex items-center justify-center group cursor-pointer">' +
-                 '<span class="w-14 h-14 rounded-full bg-black/45 backdrop-blur flex items-center justify-center text-white text-[20px] group-hover:bg-black/60 group-hover:scale-105 transition">▶</span>' +
-               '</button>';
-    }
-
-    var avatar = r.avatar
-      ? '<img src="' + esc(r.avatar) + '" alt="" loading="lazy" class="w-7 h-7 rounded-full object-cover bg-[#E6F2EE]">'
-      : '<span class="w-7 h-7 rounded-full bg-[#E6F2EE] flex items-center justify-center text-[13px]">🐕</span>';
-
-    return '' +
-      '<article class="bg-white rounded-3xl card border border-[#E8E4DC] overflow-hidden flex flex-col snap-start shrink-0 w-[80%] sm:w-auto">' +
-        '<div class="relative">' +
-          '<div class="media-box relative">' + media + '</div>' +
-          '<span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[#1E2C1A] text-[12px] font-bold py-1 px-2.5 rounded-full card z-10">📍 ' + esc(dist) + '</span>' +
-        '</div>' +
-        '<div class="p-5 flex flex-col grow">' +
-          '<h3 class="font-bold text-[#1E2C1A] text-[18px] leading-[1.3] truncate">' + esc(title) + '</h3>' +
-          '<p class="text-[#5F6B57] text-[13px] mt-1 truncate">' + esc(r.start_address || '') + '</p>' +
-          (chips ? '<div class="flex flex-wrap gap-1.5 mt-3">' + chips + '</div>' : '') +
-          '<div class="flex items-center gap-2 mt-auto pt-4">' + avatar +
-            '<span class="text-[#3D4A38] text-[13px] font-medium truncate">' + esc(r.username || 'Hundefreund') + '</span>' +
-          '</div>' +
-        '</div>' +
-      '</article>';
-  }
-
-  function showFallback() {
-    // Statt die Sektion zu verstecken: freundlicher Hinweis + CTA bleiben sichtbar
-    grid.className = 'mt-12';
-    grid.innerHTML =
-      '<div class="bg-white rounded-3xl card border border-[#E8E4DC] p-10 text-center max-w-[560px] mx-auto">' +
-        '<div class="text-[40px]">🐾</div>' +
-        '<p class="text-[#3D4A38] text-[16px] mt-3 leading-[1.6]">Die neuesten Routen entdeckst du direkt in der App.</p>' +
-      '</div>';
-  }
-
-  var PREVIEW_SECONDS = 10;
-
-  // Pausiert laufende Vorschau-Videos automatisch, sobald sie aus dem Blick scrollen
-  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.intersectionRatio < 0.5) {
-        var v = entry.target;
-        if (!v.paused && !v.ended) v.pause();
-      }
-    });
-  }, { threshold: [0, 0.5, 1] }) : null;
-
-  // Play/Pause-Icon umschalten (beim Pausieren dauerhaft sichtbar, beim Abspielen nur on hover)
-  function setToggleIcon(box, playing) {
-    var icon = box.querySelector('.toggle-icon');
-    if (!icon) return;
-    icon.textContent = playing ? '⏸' : '▶';
-    if (playing) { icon.classList.add('opacity-0'); icon.classList.remove('opacity-100'); }
-    else { icon.classList.remove('opacity-0'); icon.classList.add('opacity-100'); }
-  }
-
-  // End-Card nach der Vorschau: Hinweis "in der App weiterschauen"
-  function showEndCard(box, video) {
-    if (video) { try { video.pause(); } catch (e) {} if (io) io.unobserve(video); }
-    var end = document.createElement('a');
-    end.href = '#download';
-    end.className = 'endcard absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/65 backdrop-blur-sm text-white text-center px-4 z-20';
-    end.innerHTML =
-      '<span class="text-[32px]">🐾</span>' +
-      '<span class="text-[14px] font-semibold leading-tight">Das ganze Video gibt’s<br>in der HundeZonen-App</span>' +
-      '<span class="mt-1 inline-flex items-center gap-1 text-[12px] font-bold uppercase tracking-[0.5px] bg-white text-[#047857] py-2 px-4 rounded-full">Mehr ansehen →</span>';
-    box.appendChild(end);
-  }
-
-  // 10-Sekunden-Vorschau abspielen, danach End-Card zeigen
-  function playPreview(box, url) {
-    box.innerHTML =
-      '<video src="' + esc(url) + '#t=0.1" class="block w-full aspect-[4/3] object-cover bg-black" playsinline preload="metadata"></video>' +
-      '<button type="button" class="preview-toggle absolute inset-0 flex items-center justify-center group cursor-pointer" aria-label="Pause / Play">' +
-        '<span class="toggle-icon w-14 h-14 rounded-full bg-black/45 backdrop-blur flex items-center justify-center text-white text-[20px] opacity-0 group-hover:opacity-100 transition">⏸</span>' +
-      '</button>';
-    var video = box.querySelector('video');
-    var stopped = false;
-
-    function stop() {
-      if (stopped) return;
-      stopped = true;
-      showEndCard(box, video);
-    }
-
-    video.addEventListener('timeupdate', function () {
-      if (video.currentTime >= PREVIEW_SECONDS) stop();
-    });
-    video.addEventListener('ended', stop);
-    video.addEventListener('play',  function () { setToggleIcon(box, true); });
-    video.addEventListener('pause', function () { if (!stopped) setToggleIcon(box, false); });
-
-    if (io) io.observe(video);
-
-    var p = video.play();
-    if (p && p.catch) {
-      p.catch(function () {
-        // Falls Autoplay mit Ton blockiert wird: stumm erneut versuchen
-        video.muted = true;
-        video.play().catch(stop);
-      });
-    }
-  }
-
-  grid.addEventListener('click', function (e) {
-    // Während der Wiedergabe: Klick pausiert / setzt fort
-    var toggle = e.target.closest('.preview-toggle');
-    if (toggle) {
-      e.preventDefault();
-      var v = toggle.closest('.media-box').querySelector('video');
-      if (v) { if (v.paused) v.play(); else v.pause(); }
-      return;
-    }
-    // Erster Klick auf den Play-Button: Vorschau starten
-    var btn = e.target.closest('[data-video]');
-    if (!btn) return;
-    e.preventDefault();
-    var box = btn.closest('.media-box');
-    if (box) playPreview(box, btn.getAttribute('data-video'));
-  });
-
-  fetch('https://web.lweb.ch/get_all_routes.php')
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      var routes = (data && data.rutas) ? data.rutas : [];
-      routes = routes.filter(hasMedia); // nur Routen mit Bild oder Video
-      if (!routes.length) { showFallback(); return; }
-      grid.innerHTML = routes.slice(0, 4).map(card).join('');
-    })
-    .catch(showFallback);
-})();
-</script>
-
 <!-- ===== Interaktive Karte ===== -->
 <!-- ===== Radar highlight ===== -->
 <section id="radar" class="bg-[#FBFAF6] pt-16 pb-16">
@@ -722,109 +594,6 @@ window.cargarPixel = function () {
     </div>
   </div>
 </section>
-
-<!-- ===== Ausflüge (09/11/2026): sustituye a la Community, apagada en la app el 30/10.
-     Los chips cambian solos cada pocos segundos y también al pulsarlos; cada uno
-     enseña su captura real de la app. ===== -->
-<section id="ausfluege" class="bg-[#12403A] pt-20 pb-20 overflow-hidden">
-  <div class="ml-auto mr-auto max-w-6xl pr-4 pl-4 grid md:grid-cols-2 gap-x-16 gap-y-10 items-center">
-    <div class="md:col-start-1 md:row-start-1 md:self-end">
-      <span class="inline-flex items-center gap-2 bg-white/10 text-[#C6EBA2] text-[13px] font-semibold py-1.5 px-3 rounded-full">🏔️ NEU · Ausflüge</span>
-      <h2 class="font-bold text-white text-[40px] md:text-[44px] tracking-[-1px] leading-[1.08] mt-4">363 schöne Orte in der Schweiz – mit deinem Hund</h2>
-      <p class="text-white/80 text-[17px] leading-[1.7] mt-4">Seen, Berge, Wasserfälle, Täler und Gletscher: die bekanntesten Ausflugsziele der Schweiz, mit Foto, Distanz von dir aus und dem nächsten Ort. Speichere deine Favoriten und sieh, wie hundefreundlich ein Ort ist.</p>
-      <a href="#download" class="btn-primary inline-flex items-center font-bold uppercase bg-[#C6EBA2] text-[#12403A] text-[16px] gap-2 tracking-[0.5px] mt-7 pt-4 pr-7 pb-4 pl-7 rounded-2xl">Ausflug finden →</a>
-    </div>
-    <div class="flex flex-col items-center md:col-start-2 md:row-start-1 md:row-span-2">
-      <div class="ausf-tel rounded-[2.4rem] border-[8px] border-[#0B1F1B] bg-[#0B1F1B] overflow-hidden w-[290px] sm:w-[320px]" style="box-shadow: rgba(0,0,0,0.45) 0px 30px 60px -20px;">
-        <div class="relative" style="aspect-ratio: 640 / 1320;">
-          <img src="hundezonen-assets/ausflug-naehe.jpg" alt="HundeZonen Ausflüge: In der Nähe" class="ausf-img is-on" data-img="0" width="640" height="1320">
-          <img src="hundezonen-assets/ausflug-seen.jpg" alt="HundeZonen Ausflüge: Seen" class="ausf-img" data-img="1" loading="lazy" width="640" height="1320">
-          <img src="hundezonen-assets/ausflug-berge.jpg" alt="HundeZonen Ausflüge: Berge" class="ausf-img" data-img="2" loading="lazy" width="640" height="1320">
-          <img src="hundezonen-assets/ausflug-wasserfaelle.jpg" alt="HundeZonen Ausflüge: Wasserfälle" class="ausf-img" data-img="3" loading="lazy" width="640" height="1320">
-          <img src="hundezonen-assets/ausflug-taeler.jpg" alt="HundeZonen Ausflüge: Täler" class="ausf-img" data-img="4" loading="lazy" width="640" height="1320">
-          <img src="hundezonen-assets/ausflug-gletscher.jpg" alt="HundeZonen Ausflüge: Gletscher" class="ausf-img" data-img="5" loading="lazy" width="640" height="1320">
-        </div>
-      </div>
-    </div>
-    <div class="md:col-start-1 md:row-start-2 md:self-start flex flex-col items-center md:items-start">
-      <div class="ausf-chips" role="group" aria-label="Kategorie wählen">
-          <button type="button" class="ausf-chip" data-chip="0" aria-pressed="true" aria-label="In der Nähe">
-            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span class="ausf-txt">In der Nähe</span>
-          </button>
-          <button type="button" class="ausf-chip" data-chip="1" aria-pressed="false" aria-label="Seen">
-            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></span>
-            <span class="ausf-txt">Seen</span>
-          </button>
-          <button type="button" class="ausf-chip" data-chip="2" aria-pressed="false" aria-label="Berge">
-            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg></span>
-            <span class="ausf-txt">Berge</span>
-          </button>
-          <button type="button" class="ausf-chip" data-chip="3" aria-pressed="false" aria-label="Wasserfälle">
-            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg></span>
-            <span class="ausf-txt">Wasserfälle</span>
-          </button>
-          <button type="button" class="ausf-chip" data-chip="4" aria-pressed="false" aria-label="Täler">
-            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></svg></span>
-            <span class="ausf-txt">Täler</span>
-          </button>
-          <button type="button" class="ausf-chip" data-chip="5" aria-pressed="false" aria-label="Gletscher">
-            <span class="ausf-rund"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 20-1.25-2.5L6 18"/><path d="M10 4 8.75 6.5 6 6"/><path d="m14 20 1.25-2.5L18 18"/><path d="m14 4 1.25 2.5L18 6"/><path d="m17 21-3-6h-4"/><path d="m17 3-3 6 1.5 3"/><path d="M2 12h6.5L10 9"/><path d="m20 10-1.5 2 1.5 2"/><path d="M22 12h-6.5L14 15"/><path d="m4 10 1.5 2L4 14"/><path d="m7 21 3-6-1.5-3"/><path d="m7 3 3 6h4"/></svg></span>
-            <span class="ausf-txt">Gletscher</span>
-          </button>
-      </div>
-      <p id="ausf-lema" class="text-[#C6EBA2] text-[15px] font-semibold mt-4 text-center md:text-left min-h-[1.5em]" aria-live="polite">Was liegt ganz in deiner Nähe?</p>
-    </div>
-  </div>
-  <p class="text-center text-white/40 text-[12px] mt-10 px-4">Fotos in der App: Wikimedia Commons, mit Autor und Lizenz bei jedem Ort.</p>
-</section>
-<style>
-  .ausf-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 6px; max-width: 480px; }
-  @media (min-width: 768px) { .ausf-chips { justify-content: flex-start; } }
-  .ausf-chip { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 74px; background: none; border: 0; padding: 0; cursor: pointer; color: #fff; }
-  .ausf-rund { width: 54px; height: 54px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
-               background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); transition: background .25s, transform .25s, color .25s; }
-  .ausf-txt { font-size: 12.5px; font-weight: 700; color: rgba(255,255,255,0.72); white-space: nowrap; transition: color .25s; }
-  .ausf-chip:hover .ausf-rund { background: rgba(255,255,255,0.18); }
-  .ausf-chip[aria-pressed="true"] .ausf-rund { background: #C6EBA2; color: #12403A; border-color: #C6EBA2; transform: scale(1.06); }
-  .ausf-chip[aria-pressed="true"] .ausf-txt { color: #C6EBA2; }
-  .ausf-chip:focus-visible .ausf-rund { outline: 2px solid #C6EBA2; outline-offset: 3px; }
-  .ausf-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;
-              opacity: 0; transform: scale(1.02); transition: opacity .55s ease, transform .55s ease; }
-  .ausf-img.is-on { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .ausf-img, .ausf-rund { transition: none; } }
-</style>
-<script>
-(function () {
-  var chips = document.querySelectorAll('.ausf-chip');
-  var imgs = document.querySelectorAll('.ausf-img');
-  var lema = document.getElementById('ausf-lema');
-  var lemas = ["Was liegt ganz in deiner Nähe?","Bergseen und Uferwege","Gipfel mit Aussicht","Rauschen und Abkühlung","Weite Täler zum Durchstreifen","Ewiges Eis aus der Nähe"];
-  if (!chips.length || !imgs.length) return;
-  var actual = 0, timer = null, visible = false;
-  var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function poner(i) {
-    actual = i;
-    chips.forEach(function (c, j) { c.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
-    imgs.forEach(function (im, j) { im.classList.toggle('is-on', j === i); });
-    if (lema) lema.textContent = lemas[i] || '';
-  }
-  function seguir() {
-    clearInterval(timer);
-    if (quieto || !visible) return;
-    timer = setInterval(function () { poner((actual + 1) % chips.length); }, 3200);
-  }
-  // Al pulsar: cambia ya, y la cuenta vuelve a empezar desde ahí.
-  chips.forEach(function (c, j) { c.addEventListener('click', function () { poner(j); seguir(); }); });
-  // Solo gira cuando la sección se ve: fuera de pantalla no gasta nada.
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; seguir(); }, { threshold: 0.25 })
-      .observe(document.getElementById('ausfluege'));
-  } else { visible = true; seguir(); }
-  // Precarga las demás capturas tras la primera, para que el cambio no parpadee.
-  window.addEventListener('load', function () { imgs.forEach(function (im) { im.loading = 'eager'; }); });
-})();
-</script>
 
 <!-- ===== Testimonials ===== -->
 <section id="community" class="bg-[#F7F4EF] pt-20 pb-20">
